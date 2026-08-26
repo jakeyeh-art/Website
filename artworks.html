@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Artworks — Jake Yeh</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #faf8f4;
+    --ink: #2b2822;
+    --olive: #7d7758;
+    --olive-dark: #4f4a37;
+    --line: #c9c2ae;
+    --sold: #b6512f;
+    --banner: #c65a2e;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Jost', sans-serif;
+    color: var(--ink);
+    background: var(--cream);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  /* ---------- BANNER ---------- */
+  .banner {
+    background: var(--banner);
+    color: #fff;
+    text-align: center;
+    font-size: 0.72rem;
+    letter-spacing: 0.03em;
+    padding: 9px 16px;
+  }
+
+  /* ---------- NAV ---------- */
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 22px 48px;
+    border-bottom: 1px solid var(--line);
+    background: var(--cream);
+  }
+
+  .logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 34px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 0.7rem;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    padding-bottom: 4px;
+    border-bottom: 1px solid transparent;
+  }
+
+  .nav-links a.active,
+  .nav-links a:hover { border-bottom-color: var(--ink); }
+
+  .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .nav-right svg { width: 16px; height: 16px; display: block; }
+
+  /* ---------- LAYOUT ---------- */
+  .page {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 50px;
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 46px 40px 100px;
+  }
+
+  /* ---------- SIDEBAR ---------- */
+  .sidebar h4 {
+    font-size: 0.68rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #86806c;
+    margin-bottom: 16px;
+  }
+
+  .cat-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 34px;
+  }
+
+  .cat-list a {
+    font-size: 0.86rem;
+    color: #4a4636;
+  }
+
+  .cat-list a.active {
+    color: var(--ink);
+    font-weight: 500;
+    border-bottom: 1px solid var(--ink);
+    padding-bottom: 2px;
+    display: inline-block;
+  }
+
+  .search-box {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--line);
+    background: #fff;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.82rem;
+    border-radius: 1px;
+  }
+
+  /* ---------- GRID ---------- */
+  .grid-heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.78rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--olive);
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  .artwork-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px 36px;
+  }
+
+  .painting-card { text-align: left; }
+
+  .painting-img {
+    aspect-ratio: 4 / 3;
+    width: 100%;
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin-bottom: 14px;
+    font-size: 0.62rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: rgba(0,0,0,0.35);
+  }
+
+  .painting-img span { padding: 0 16px; text-align: center; }
+
+  .g1 { background: linear-gradient(160deg, #b9c79a, #e8e6c9 60%, #f4efdc); }
+  .g2 { background: linear-gradient(150deg, #8fa5b8, #d8e0d8 55%, #f0ede0); }
+  .g3 { background: linear-gradient(160deg, #d8c27a, #e9d9a3 60%, #f5ecd0); }
+  .g4 { background: linear-gradient(150deg, #c9b48a, #e6d7b8 55%, #f6efe0); }
+  .g5 { background: linear-gradient(160deg, #d1b45f, #ecd99a 60%, #f7edcf); }
+  .g6 { background: linear-gradient(150deg, #b79a6a, #dcc79c 55%, #f4ecdb); }
+  .g7 { background: linear-gradient(160deg, #a9b98d, #d9ddc0 60%, #f2f0e4); }
+  .g8 { background: linear-gradient(150deg, #6b6450, #97907a 55%, #d6d1bf); }
+
+  .sold-tag {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: var(--sold);
+    color: #fff;
+    font-size: 0.58rem;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    padding: 4px 9px;
+  }
+
+  .painting-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    margin-bottom: 4px;
+  }
+
+  .painting-card .price {
+    font-size: 0.8rem;
+    color: #6b6656;
+  }
+
+  @media (max-width: 800px) {
+    .page { grid-template-columns: 1fr; padding: 30px 24px 70px; }
+    .artwork-grid { grid-template-columns: 1fr 1fr; gap: 26px 20px; }
+    .nav-links { display: none; }
+  }
+
+  @media (max-width: 480px) {
+    .artwork-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+  <div class="banner">Please note: orders placed between Aug 24 and Sep 20 will ship at the end of September.</div>
+
+  <nav>
+    <div class="logo">Jake Yeh</div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="artworks.html" class="active">Artworks</a></li>
+      <li><a href="#">Contact</a></li>
+      <li><a href="#">About</a></li>
+    </ul>
+    <div class="nav-right">
+      <a href="#">Login</a>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="0.6" fill="currentColor" stroke="none"/></svg>
+      <a href="#">Cart · 0</a>
+    </div>
+  </nav>
+
+  <div class="page">
+
+    <aside class="sidebar">
+      <h4>Categories</h4>
+      <ul class="cat-list">
+        <li><a href="#" class="active">All</a></li>
+        <li><a href="#">Plein Air Studies</a></li>
+        <li><a href="#">Figure & Portrait</a></li>
+        <li><a href="#">Still Life & Interiors</a></li>
+      </ul>
+      <h4>Search</h4>
+      <input type="text" class="search-box" placeholder="Search artworks">
+    </aside>
+
+    <main>
+      <div class="grid-heading">All Artworks</div>
+      <div class="artwork-grid">
+
+        <div class="painting-card">
+          <div class="painting-img g1"><span>painting photo</span></div>
+          <h3>Woman on the Rock, River Study</h3>
+          <div class="price">$450.00</div>
+        </div>
+
+        <div class="painting-card">
+          <div class="painting-img g2">
+            <span class="sold-tag">Sold Out</span>
+            <span>painting photo</span>
+          </div>
+          <h3>As We Grow Old</h3>
+          <div class="price">$1,200.00</div>
+        </div>
+
+        <div class="painting-card">
+          <div class="painting-img g3"><span>painting photo</span></div>
+          <h3>Anderson Park, Late Summer</h3>
+          <div class="price">$320.00</div>
+        </div>
+
+        <div class="painting-card">
+          <div class="painting-img g4"><span>painting photo</span></div>
+          <h3>Backyard, Morning Light</h3>
+          <div class="price">$280.00</div>
+        </div>
+
+        <div class="painting-card">
+          <div class="painting-img g5"><span>painting photo</span></div>
+          <h3>Study of a Pear and Knife</h3>
+          <div class="price">$190.00</div>
+        </div>
+
+        <div class="painting-card">
+          <div class="painting-img g6">
+            <span class="sold-tag">Sold Out</span>
+            <span>painting photo</span>
+          </div>
+          <h3>Old Barn, West Orange</h3>
+          <div class="price">$400.00</div>
+        </div>
+
+        <div class="painting-card">
+          <div class="painting-img g7"><span>painting photo</span></div>
+          <h3>Garden Path in Late Bloom</h3>
+          <div class="price">$310.00</div>
+        </div>
+
+        <div class="painting-card">
+          <div class="painting-img g8"><span>painting photo</span></div>
+          <h3>Rooftops at Dusk</h3>
+          <div class="price">$380.00</div>
+        </div>
+
+      </div>
+    </main>
+
+  </div>
+
+</body>
+</html>
