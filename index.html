@@ -89,19 +89,10 @@
     position: relative;
     height: 78vh;
     min-height: 460px;
-    background: linear-gradient(135deg, #6b6450 0%, #8f8874 38%, #d9d2bd 70%, #efe9db 100%);
+    background-image: linear-gradient(180deg, rgba(25, 23, 18, 0.34), rgba(25, 23, 18, 0.04) 48%, rgba(25, 23, 18, 0.16)), url('https://images.unsplash.com/photo-1549490349-8643362247b5?auto=format&fit=crop&w=2400&q=85');
+    background-position: center;
+    background-size: cover;
     overflow: hidden;
-  }
-
-  .hero::after {
-    content: "studio corner — placeholder, swap for your own photo";
-    position: absolute;
-    bottom: 24px;
-    right: 32px;
-    font-size: 0.65rem;
-    color: rgba(255,255,255,0.75);
-    letter-spacing: 0.05em;
-    font-family: 'Jost', sans-serif;
   }
 
   /* ---------- QUOTE ---------- */
@@ -328,7 +319,7 @@
     </div>
   </nav>
 
-  <section class="hero"></section>
+  <section class="hero" role="img" aria-label="Abstract artwork in warm earth tones"></section>
 
   <section class="quote-section">
     <p>"I left a desk job to paint from life because I wanted to slow down enough to actually see something — a wrist, a fold of cloth, the particular grey of a New Jersey afternoon. Painting outdoors, direct from observation, is how I stay honest: the light won't wait for me to get comfortable, so neither can I."</p>
