@@ -295,8 +295,9 @@
 
   /* ---------- RESPONSIVE ---------- */
   @media (max-width: 900px) {
-    nav { padding: 20px 24px; }
-    .nav-links { display: none; }
+    nav { padding: 20px 24px; flex-wrap: wrap; row-gap: 14px; }
+    .nav-links { order: 3; flex-basis: 100%; justify-content: space-between; gap: 12px; }
+    .nav-links a { font-size: 0.65rem; }
     .shop { grid-template-columns: 1fr; padding: 24px; }
     .quote-section { padding: 60px 24px 40px; }
   }
@@ -321,7 +322,6 @@
 
   <section class="quote-section">
     <p>"For the past six years, I woke up questioning the reason for my existence in this world. There's got to be more to life than sitting in front of a computer for eight hours a day, I thought. Finally, I left a corporate career to pursue my passion for representational art. Art is an open ended question with no definitive answer, and that's exactly what keeps my curiosity alive. It's how I connect to the world and try to become a better person, one lesson at a time. It's a lifelong journey of patience, discipline, and discovery."</p>
-    <a href="#" class="section-label">About</a>
   </section>
 
   <section class="shop">
@@ -345,8 +345,6 @@
     </div>
   </section>
 
-  <a href="artworks.html" class="more-link section-label">More Available Artworks</a>
-
   <section class="insta-section">
     <div class="insta-tile"></div>
     <div class="insta-copy">
@@ -357,12 +355,12 @@
   <footer>
     <a href="#" class="section-label">INQUIRE</a>
     <h2>Subscribe</h2>
-    <p class="sub">Subscribe with your e-mail address to hear about new paintings and shows.</p>
-    <form class="subscribe-form" onsubmit="return false;">
-      <input type="email" placeholder="Email Address" required>
+    <p class="sub">Subscribe with your e-mail address to hear more about my works.</p>
+    <form class="subscribe-form" action="https://formspree.io/f/xjyvbdlr" method="POST">
+      <input type="email" name="email" placeholder="Email Address" autocomplete="email" required>
       <button type="submit">Subscribe</button>
     </form>
-    <p class="privacy">We respect your privacy.</p>
+   
 
     <div class="footer-bottom">
       <div class="made-with">Built by Jake Yeh</div>

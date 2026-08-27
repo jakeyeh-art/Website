@@ -71,72 +71,25 @@
 
   /* ---------- LAYOUT ---------- */
   .page {
-    display: grid;
-    grid-template-columns: 220px 1fr;
-    gap: 50px;
     max-width: 1240px;
     margin: 0 auto;
     padding: 46px 40px 100px;
   }
 
-  /* ---------- SIDEBAR ---------- */
-  .sidebar h4 {
-    font-size: 0.68rem;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: #86806c;
-    margin-bottom: 16px;
-  }
-
-  .cat-list {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    margin-bottom: 34px;
-  }
-
-  .cat-list a {
-    font-size: 0.86rem;
-    color: #4a4636;
-  }
-
-  .cat-list a.active {
-    color: var(--ink);
-    font-weight: 500;
-    border-bottom: 1px solid var(--ink);
-    padding-bottom: 2px;
-    display: inline-block;
-  }
-
-  .search-box {
-    width: 100%;
-    padding: 10px 12px;
-    border: 1px solid var(--line);
-    background: #fff;
-    font-family: 'Jost', sans-serif;
-    font-size: 0.82rem;
-    border-radius: 1px;
-  }
-
-  /* ---------- GRID ---------- */
-  .grid-heading {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 0.78rem;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--olive);
-    text-align: center;
-    margin-bottom: 30px;
-  }
-
   .artwork-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 40px 36px;
+    display: flex;
+    gap: 36px;
+    overflow-x: auto;
+    padding: 12px 0 26px;
+    scroll-snap-type: x mandatory;
+    scrollbar-color: var(--olive) transparent;
   }
 
-  .painting-card { text-align: left; }
+  .painting-card {
+    flex: 0 0 calc((100% - 72px) / 3);
+    scroll-snap-align: start;
+    text-align: left;
+  }
 
   .painting-img {
     aspect-ratio: 4 / 3;
@@ -191,13 +144,16 @@
   }
 
   @media (max-width: 800px) {
-    .page { grid-template-columns: 1fr; padding: 30px 24px 70px; }
-    .artwork-grid { grid-template-columns: 1fr 1fr; gap: 26px 20px; }
-    .nav-links { display: none; }
+    .page { padding: 30px 24px 70px; }
+    .artwork-grid { gap: 20px; }
+    .painting-card { flex-basis: calc((100% - 20px) / 2); }
+    nav { flex-wrap: wrap; row-gap: 14px; }
+    .nav-links { order: 3; flex-basis: 100%; justify-content: space-between; gap: 12px; }
+    .nav-links a { font-size: 0.65rem; }
   }
 
   @media (max-width: 480px) {
-    .artwork-grid { grid-template-columns: 1fr; }
+    .painting-card { flex-basis: 86%; }
   }
 </style>
 </head>
@@ -216,23 +172,8 @@
     </div>
   </nav>
 
-  <div class="page">
-
-    <aside class="sidebar">
-      <h4>Categories</h4>
-      <ul class="cat-list">
-        <li><a href="#" class="active">All</a></li>
-        <li><a href="#">Plein Air Studies</a></li>
-        <li><a href="#">Figure & Portrait</a></li>
-        <li><a href="#">Still Life & Interiors</a></li>
-      </ul>
-      <h4>Search</h4>
-      <input type="text" class="search-box" placeholder="Search artworks">
-    </aside>
-
-    <main>
-      <div class="grid-heading">All Artworks</div>
-      <div class="artwork-grid">
+  <main class="page">
+    <div class="artwork-grid">
 
         <div class="painting-card">
           <div class="painting-img g1"><span>painting photo</span></div>
@@ -288,10 +229,8 @@
           <div class="price">$380.00</div>
         </div>
 
-      </div>
-    </main>
-
-  </div>
+    </div>
+  </main>
 
 </body>
 </html>
