@@ -82,6 +82,10 @@
     if (uploadedTitle) {
       artwork.title = uploadedTitle;
       artwork.description = 'Artwork available for inquiry.';
+      if (uploadedTitle.toLowerCase() === 'icing on the cake') {
+        artwork.price = '$5,000.00';
+        artwork.size = '16 x 24 in';
+      }
     }
     document.title = `${artwork.title} | JAKE YEN PO YEH`;
     document.getElementById('detail-title').textContent = artwork.title;
