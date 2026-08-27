@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="8" fill="#4f4a37"/>
+  <text x="32" y="45" text-anchor="middle" fill="#faf8f4" font-family="serif" font-size="36">葉</text>
+  <circle cx="47" cy="47" r="5" fill="#b6512f"/>
+</svg>

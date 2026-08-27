@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+<title>ARTWORK | JAKE YEN PO YEH</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bungee&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root { --cream: #faf8f4; --ink: #2b2822; --olive: #7d7758; --olive-dark: #4f4a37; --line: #c9c2ae; --sold: #b6512f; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Jost', sans-serif; color: var(--ink); background: var(--cream); -webkit-font-smoothing: antialiased; }
+  a { color: inherit; text-decoration: none; }
+  nav { display: flex; align-items: center; justify-content: space-between; padding: 28px 48px; border-bottom: 1px solid var(--line); }
+  .logo { font-family: 'Bungee', sans-serif; font-size: 1.35rem; letter-spacing: 0.04em; text-transform: uppercase; }
+  .nav-links { display: flex; gap: 36px; list-style: none; }
+  .nav-links a { font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; padding-bottom: 4px; border-bottom: 1px solid transparent; }
+  .nav-links a:hover { border-bottom-color: var(--ink); }
+  .nav-right svg { width: 17px; height: 17px; display: block; }
+  .content { max-width: 1160px; margin: 0 auto; padding: 64px 40px 100px; }
+  .back-link { display: inline-block; margin-bottom: 42px; color: var(--olive); font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; }
+  .artwork-detail { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(280px, 0.75fr); gap: 64px; align-items: center; }
+  .detail-image { aspect-ratio: 4 / 3; display: grid; place-items: center; background: var(--artwork-color, #e8e1d2); }
+  .detail-image span { padding: 12px 16px; background: rgba(250,248,244,0.86); font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; }
+  .detail-copy h1 { font-family: 'Cormorant Garamond', serif; font-size: 3.5rem; font-weight: 500; line-height: 1; margin-bottom: 24px; }
+  .detail-copy p { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; line-height: 1.55; }
+  .meta { display: grid; gap: 8px; margin: 30px 0; font-size: 0.86rem; }
+  .meta strong { font-weight: 500; }
+  .inquire-button { display: inline-block; padding: 13px 20px; background: var(--olive); color: #fff; font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; }
+  .inquire-button:hover { background: var(--olive-dark); }
+  @media (max-width: 900px) { nav { padding: 20px 24px; flex-wrap: wrap; row-gap: 14px; } .nav-links { display: none; } .content { padding: 46px 24px 70px; } .artwork-detail { grid-template-columns: 1fr; gap: 36px; } .detail-copy h1 { font-size: 3rem; } }
+</style>
+</head>
+<body>
+  <nav>
+    <div class="logo">JAKE YEN PO YEH</div>
+    <ul class="nav-links">
+      <li><a href="index.html">HOME</a></li>
+      <li><a href="artworks.html">ARTWORKS</a></li>
+      <li><a href="inquire.html">INQUIRE</a></li>
+      <li><a href="about.html">ABOUT</a></li>
+    </ul>
+    <div class="nav-right">
+      <a href="https://instagram.com/jakeyeh_art" aria-label="Visit Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="0.6" fill="currentColor" stroke="none"/></svg></a>
+    </div>
+  </nav>
+
+  <main class="content">
+    <a class="back-link" href="artworks.html">Back to artworks</a>
+    <div class="artwork-detail">
+      <div class="detail-image" id="detail-image"><span>painting photo</span></div>
+      <div class="detail-copy">
+        <h1 id="detail-title"></h1>
+        <div class="meta">
+          <div><strong>Price:</strong> <span id="detail-price"></span></div>
+          <div><strong>Size:</strong> <span id="detail-size"></span></div>
+        </div>
+        <p id="detail-description"></p>
+        <a class="inquire-button" id="inquire-link" href="inquire.html">Inquire about this artwork</a>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    const artworks = {
+      'woman-on-the-rock': { title: 'Woman on the Rock, River Study', price: '$450.00', size: '12 x 16 in', color: '#d9dfbd', description: 'A direct observation study of a figure resting beside the river, painted with attention to the shifting light and quiet atmosphere.' },
+      'as-we-grow-old': { title: 'As We Grow Old', price: '$1,200.00', size: '18 x 24 in', color: '#cbd4d8', description: 'A portrait study exploring time, presence, and the subtle changes held in an observed face.' },
+      'anderson-park': { title: 'Anderson Park, Late Summer', price: '$320.00', size: '11 x 14 in', color: '#e8d99f', description: 'A late-summer landscape study focused on warm light, open air, and the changing greens of the park.' },
+      'backyard-morning-light': { title: 'Backyard, Morning Light', price: '$280.00', size: '9 x 12 in', color: '#dfcfad', description: 'A small plein air study of morning light moving across a familiar backyard.' },
+      'pear-and-knife': { title: 'Study of a Pear and Knife', price: '$190.00', size: '8 x 10 in', color: '#ead48a', description: 'A still life study of simple objects, observing their weight, color, and relationship to light.' },
+      'old-barn': { title: 'Old Barn, West Orange', price: '$400.00', size: '12 x 16 in', color: '#c6ad82', description: 'A landscape study of an old barn, built from direct observation and the muted colors of the surrounding fields.' },
+      'garden-path': { title: 'Garden Path in Late Bloom', price: '$310.00', size: '11 x 14 in', color: '#cbd5ab', description: 'A garden path observed in the final weeks of bloom, balancing structure with the looseness of growing forms.' },
+      'rooftops-at-dusk': { title: 'Rooftops at Dusk', price: '$380.00', size: '12 x 16 in', color: '#918a76', description: 'An evening city study concerned with the quiet geometry of rooftops as daylight gives way to dusk.' }
+    };
+
+    const id = new URLSearchParams(window.location.search).get('id');
+    const artwork = artworks[id] || artworks['woman-on-the-rock'];
+    document.title = `${artwork.title} | JAKE YEN PO YEH`;
+    document.getElementById('detail-title').textContent = artwork.title;
+    document.getElementById('detail-price').textContent = artwork.price;
+    document.getElementById('detail-size').textContent = artwork.size;
+    document.getElementById('detail-description').textContent = artwork.description;
+    document.getElementById('detail-image').style.setProperty('--artwork-color', artwork.color);
+    document.getElementById('inquire-link').href = `inquire.html?artwork=${encodeURIComponent(artwork.title)}`;
+  </script>
+</body>
+</html>

@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="images/favicon.svg" type="image/svg+xml">
 <title>ARTWORKS | JAKE YEN PO YEH</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
@@ -86,10 +87,13 @@
   }
 
   .painting-card {
-    flex: 0 0 calc((100% - 72px) / 3);
+    flex: 0 0 100%;
     scroll-snap-align: start;
     text-align: left;
   }
+
+  .artwork-link { display: block; }
+  .artwork-link:hover .painting-img { outline: 2px solid var(--olive); outline-offset: 4px; }
 
   .painting-img {
     aspect-ratio: 4 / 3;
@@ -161,14 +165,14 @@
   @media (max-width: 800px) {
     .page { padding: 30px 24px 70px; }
     .artwork-grid { gap: 20px; }
-    .painting-card { flex-basis: calc((100% - 20px) / 2); }
+    .painting-card { flex-basis: 100%; }
     nav { flex-wrap: wrap; row-gap: 14px; }
     .nav-links { order: 3; flex-basis: 100%; justify-content: space-between; gap: 12px; }
     .nav-links a { font-size: 0.65rem; }
   }
 
   @media (max-width: 480px) {
-    .painting-card { flex-basis: 86%; }
+    .painting-card { flex-basis: 100%; }
   }
 </style>
 </head>
@@ -191,57 +195,65 @@
     <div class="artwork-grid">
 
         <div class="painting-card">
-          <div class="painting-img g1"><span>painting photo</span></div>
-          <h3>Woman on the Rock, River Study</h3>
-          <div class="price">$450.00</div>
+          <a class="artwork-link" href="artwork-detail.html?id=woman-on-the-rock">
+            <div class="painting-img g1"><span>painting photo</span></div>
+            <h3>Woman on the Rock, River Study</h3>
+          </a>
         </div>
 
         <div class="painting-card">
-          <div class="painting-img g2">
-            <span class="sold-tag">Sold Out</span>
-            <span>painting photo</span>
-          </div>
-          <h3>As We Grow Old</h3>
-          <div class="price">$1,200.00</div>
+          <a class="artwork-link" href="artwork-detail.html?id=as-we-grow-old">
+            <div class="painting-img g2">
+              <span class="sold-tag">Sold Out</span>
+              <span>painting photo</span>
+            </div>
+            <h3>As We Grow Old</h3>
+          </a>
         </div>
 
         <div class="painting-card">
-          <div class="painting-img g3"><span>painting photo</span></div>
-          <h3>Anderson Park, Late Summer</h3>
-          <div class="price">$320.00</div>
+          <a class="artwork-link" href="artwork-detail.html?id=anderson-park">
+            <div class="painting-img g3"><span>painting photo</span></div>
+            <h3>Anderson Park, Late Summer</h3>
+          </a>
         </div>
 
         <div class="painting-card">
-          <div class="painting-img g4"><span>painting photo</span></div>
-          <h3>Backyard, Morning Light</h3>
-          <div class="price">$280.00</div>
+          <a class="artwork-link" href="artwork-detail.html?id=backyard-morning-light">
+            <div class="painting-img g4"><span>painting photo</span></div>
+            <h3>Backyard, Morning Light</h3>
+          </a>
         </div>
 
         <div class="painting-card">
-          <div class="painting-img g5"><span>painting photo</span></div>
-          <h3>Study of a Pear and Knife</h3>
-          <div class="price">$190.00</div>
+          <a class="artwork-link" href="artwork-detail.html?id=pear-and-knife">
+            <div class="painting-img g5"><span>painting photo</span></div>
+            <h3>Study of a Pear and Knife</h3>
+          </a>
         </div>
 
         <div class="painting-card">
-          <div class="painting-img g6">
-            <span class="sold-tag">Sold Out</span>
-            <span>painting photo</span>
-          </div>
-          <h3>Old Barn, West Orange</h3>
-          <div class="price">$400.00</div>
+          <a class="artwork-link" href="artwork-detail.html?id=old-barn">
+            <div class="painting-img g6">
+              <span class="sold-tag">Sold Out</span>
+              <span>painting photo</span>
+            </div>
+            <h3>Old Barn, West Orange</h3>
+          </a>
         </div>
 
         <div class="painting-card">
-          <div class="painting-img g7"><span>painting photo</span></div>
-          <h3>Garden Path in Late Bloom</h3>
-          <div class="price">$310.00</div>
+          <a class="artwork-link" href="artwork-detail.html?id=garden-path">
+            <div class="painting-img g7"><span>painting photo</span></div>
+            <h3>Garden Path in Late Bloom</h3>
+          </a>
         </div>
 
         <div class="painting-card">
-          <div class="painting-img g8"><span>painting photo</span></div>
-          <h3>Rooftops at Dusk</h3>
-          <div class="price">$380.00</div>
+          <a class="artwork-link" href="artwork-detail.html?id=rooftops-at-dusk">
+            <div class="painting-img g8"><span>painting photo</span></div>
+            <h3>Rooftops at Dusk</h3>
+          </a>
         </div>
 
     </div>
