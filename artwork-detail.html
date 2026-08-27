@@ -6,7 +6,7 @@
 <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
 <title>ARTWORK | JAKE YEN PO YEH</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Bungee&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bungee&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root { --cream: #faf8f4; --ink: #2b2822; --olive: #7d7758; --olive-dark: #4f4a37; --line: #c9c2ae; --sold: #b6512f; }
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -22,9 +22,10 @@
   .back-link { display: inline-block; margin-bottom: 42px; color: var(--olive); font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; }
   .artwork-detail { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(280px, 0.75fr); gap: 64px; align-items: center; }
   .detail-image { aspect-ratio: 4 / 3; display: grid; place-items: center; background: var(--artwork-color, #e8e1d2); }
+  .detail-image img { width: 100%; height: 100%; object-fit: contain; display: block; }
   .detail-image span { padding: 12px 16px; background: rgba(250,248,244,0.86); font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; }
-  .detail-copy h1 { font-family: 'Cormorant Garamond', serif; font-size: 3.5rem; font-weight: 500; line-height: 1; margin-bottom: 24px; }
-  .detail-copy p { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; line-height: 1.55; }
+  .detail-copy h1 { font-family: 'Jost', sans-serif; font-size: 3.5rem; font-weight: 500; line-height: 1; margin-bottom: 24px; }
+  .detail-copy p { font-family: 'Jost', sans-serif; font-size: 1.3rem; line-height: 1.55; }
   .meta { display: grid; gap: 8px; margin: 30px 0; font-size: 0.86rem; }
   .meta strong { font-weight: 500; }
   .inquire-button { display: inline-block; padding: 13px 20px; background: var(--olive); color: #fff; font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; }
@@ -75,13 +76,22 @@
     };
 
     const id = new URLSearchParams(window.location.search).get('id');
+    const imageUrl = new URLSearchParams(window.location.search).get('image');
+    const uploadedTitle = new URLSearchParams(window.location.search).get('title');
     const artwork = artworks[id] || artworks['woman-on-the-rock'];
+    if (uploadedTitle) {
+      artwork.title = uploadedTitle;
+      artwork.description = 'Artwork available for inquiry.';
+    }
     document.title = `${artwork.title} | JAKE YEN PO YEH`;
     document.getElementById('detail-title').textContent = artwork.title;
     document.getElementById('detail-price').textContent = artwork.price;
     document.getElementById('detail-size').textContent = artwork.size;
     document.getElementById('detail-description').textContent = artwork.description;
     document.getElementById('detail-image').style.setProperty('--artwork-color', artwork.color);
+    if (imageUrl) {
+      document.getElementById('detail-image').innerHTML = `<img src="${imageUrl}" alt="${artwork.title}">`;
+    }
     document.getElementById('inquire-link').href = `inquire.html?artwork=${encodeURIComponent(artwork.title)}`;
   </script>
 </body>
