@@ -26,11 +26,12 @@
   .detail-image span { padding: 12px 16px; background: rgba(250,248,244,0.86); font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; }
   .detail-copy h1 { font-family: 'Jost', sans-serif; font-size: 3.5rem; font-weight: 500; line-height: 1; margin-bottom: 24px; }
   .detail-copy p { font-family: 'Jost', sans-serif; font-size: 1.3rem; line-height: 1.55; }
+  .detail-top { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
   .meta { display: grid; gap: 8px; margin: 30px 0; font-size: 0.86rem; }
   .meta strong { font-weight: 500; }
   .inquire-button { display: inline-block; padding: 13px 20px; background: var(--olive); color: #fff; font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; }
   .inquire-button:hover { background: var(--olive-dark); }
-  @media (max-width: 900px) { nav { padding: 20px 24px; flex-wrap: wrap; row-gap: 14px; } .nav-links { display: none; } .content { padding: 46px 24px 70px; } .artwork-detail { grid-template-columns: 1fr; gap: 36px; } .detail-copy h1 { font-size: 3rem; } }
+  @media (max-width: 900px) { nav { padding: 20px 24px; flex-wrap: wrap; row-gap: 14px; } .nav-links { display: none; } .content { padding: 46px 24px 70px; } .artwork-detail { grid-template-columns: 1fr; gap: 36px; } .detail-copy h1 { font-size: 3rem; } .detail-top { align-items: flex-start; flex-wrap: wrap; } }
 </style>
 </head>
 <body>
@@ -53,12 +54,14 @@
       <div class="detail-image" id="detail-image"><span>painting photo</span></div>
       <div class="detail-copy">
         <h1 id="detail-title"></h1>
-        <div class="meta">
-          <div><strong>Price:</strong> <span id="detail-price"></span></div>
-          <div><strong>Size:</strong> <span id="detail-size"></span></div>
+        <div class="detail-top">
+          <div class="meta">
+            <div><strong>Price:</strong> <span id="detail-price"></span></div>
+            <div><strong>Size:</strong> <span id="detail-size"></span></div>
+          </div>
+          <a class="inquire-button" id="inquire-link" href="inquire.html">INQUIRE</a>
         </div>
         <p id="detail-description"></p>
-        <a class="inquire-button" id="inquire-link" href="inquire.html">INQUIRE</a>
       </div>
     </div>
   </main>
