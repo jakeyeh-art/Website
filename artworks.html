@@ -187,9 +187,11 @@
   .subscribe-form input { flex: 1; min-width: 0; padding: 12px 14px; border: none; border-radius: 1px; font: 0.85rem 'Jost', sans-serif; }
   .subscribe-form button { padding: 12px 20px; border: none; background: var(--olive-dark); color: #fff; font: 0.72rem 'Jost', sans-serif; letter-spacing: 0.12em; text-transform: uppercase; cursor: pointer; }
   .subscribe-form button:hover { background: #3c3829; }
-  .footer-bottom { max-width: 1160px; margin: 38px auto 0; padding-top: 22px; border-top: 1px solid rgba(244,241,232,0.25); display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 14px 24px; font-size: 0.7rem; letter-spacing: 0.05em; }
-  .footer-bottom .made-with { color: #cfcab8; }
+  .footer-bottom { max-width: 1160px; margin: 38px auto 0; padding: 22px 0 0 40px; border-top: 1px solid rgba(244,241,232,0.25); display: flex; justify-content: flex-end; align-items: center; flex-wrap: wrap; gap: 14px 24px; font-size: 0.7rem; letter-spacing: 0.05em; position: relative; }
+  .footer-bottom .made-with { color: #cfcab8; margin-right: auto; }
+  .made-with img { display: block; width: 88px; height: auto; }
   .footer-links { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; }
+  .footer-bottom .subscribe-form { position: absolute; top: 50%; left: 50%; margin: 0; transform: translate(-50%, -50%); }
 
   @media (max-width: 800px) {
     .page { padding: 30px 24px 70px; }
@@ -230,14 +232,12 @@
   <a class="sketchbook-link" href="sketchbooks.html">Sketchbooks</a>
 
   <footer>
-    <h2>Subscribe</h2>
-    <p class="sub">Subscribe with your e-mail address to hear more about my works.</p>
-    <form class="subscribe-form" action="https://formspree.io/f/xjyvbdlr" method="POST">
-      <input type="email" name="email" placeholder="Email Address" autocomplete="email" required>
-      <button type="submit">Subscribe</button>
-    </form>
     <div class="footer-bottom">
-      <div class="made-with">Built by Jake Yeh</div>
+      <div class="made-with"><img src="https://raw.githubusercontent.com/jakeyeh-art/Website/main/images/Stamp.png" alt="Jake Yeh stamp" onerror="this.hidden = true; this.nextElementSibling.hidden = false;"><span hidden>Built by Jake Yeh</span></div>
+      <form class="subscribe-form" action="https://formspree.io/f/xjyvbdlr" method="POST">
+        <input type="email" name="email" placeholder="Email Address" autocomplete="email" required>
+        <button type="submit">Subscribe</button>
+      </form>
       <div class="footer-links">
         <a href="artworks.html">Artworks</a>
         <a href="about.html">About</a>

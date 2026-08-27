@@ -240,7 +240,6 @@
   }
 
   footer h2 {
-    font-size: 2rem;
     margin: 22px 0 10px;
     letter-spacing: 0.04em;
   }
@@ -292,8 +291,10 @@
     padding-top: 22px;
     border-top: 1px solid rgba(244,241,232,0.25);
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
+    padding-left: 40px;
     align-items: center;
+    position: relative;
     flex-wrap: wrap;
     gap: 14px;
     font-size: 0.7rem;
@@ -303,9 +304,11 @@
     margin-right: auto;
   }
 
-  .footer-bottom .made-with { color: #cfcab8; }
+  .footer-bottom .made-with { color: #cfcab8; margin-right: auto; }
+  .made-with img { display: block; width: 88px; height: auto; }
 
   .footer-links { display: flex; gap: 20px; }
+  .footer-bottom .subscribe-form { position: absolute; top: 50%; left: 50%; margin: 0; transform: translate(-50%, -50%); }
 
   /* ---------- RESPONSIVE ---------- */
   @media (max-width: 900px) {
@@ -353,16 +356,12 @@
 
 
   <footer>
-    <h2>Subscribe</h2>
-    <p class="sub">Subscribe with your e-mail address to hear more about my works.</p>
-    <form class="subscribe-form" action="https://formspree.io/f/xjyvbdlr" method="POST">
-      <input type="email" name="email" placeholder="Email Address" autocomplete="email" required>
-      <button type="submit">Subscribe</button>
-    </form>
-   
-
     <div class="footer-bottom">
-      <div class="made-with">Built by Jake Yeh</div>
+      <div class="made-with"><img src="https://raw.githubusercontent.com/jakeyeh-art/Website/main/images/Stamp.png" alt="Jake Yeh stamp" onerror="this.hidden = true; this.nextElementSibling.hidden = false;"><span hidden>Built by Jake Yeh</span></div>
+      <form class="subscribe-form" action="https://formspree.io/f/xjyvbdlr" method="POST">
+        <input type="email" name="email" placeholder="Email Address" autocomplete="email" required>
+        <button type="submit">Subscribe</button>
+      </form>
       <div class="footer-links">
         <a href="artworks.html">Artworks</a>
         <a href="about.html">About</a>
