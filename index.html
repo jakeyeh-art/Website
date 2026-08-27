@@ -129,10 +129,16 @@
     max-width: 1160px;
     margin: 40px auto 0;
     padding: 30px 40px 20px;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 44px;
   }
+
+  .featured-artwork {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(280px, 0.9fr);
+    gap: 44px;
+    align-items: center;
+  }
+
+  .featured-artwork .painting-card { width: 100%; }
 
   .painting-card { text-align: left; }
 
@@ -180,6 +186,12 @@
   .painting-card .price {
     font-size: 0.82rem;
     color: #6b6656;
+  }
+
+  .artwork-description {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.35rem;
+    line-height: 1.55;
   }
 
   .more-link {
@@ -298,7 +310,8 @@
     nav { padding: 20px 24px; flex-wrap: wrap; row-gap: 14px; }
     .nav-links { order: 3; flex-basis: 100%; justify-content: space-between; gap: 12px; }
     .nav-links a { font-size: 0.65rem; }
-    .shop { grid-template-columns: 1fr; padding: 24px; }
+    .shop { padding: 24px; }
+    .featured-artwork { grid-template-columns: 1fr; gap: 28px; }
     .quote-section { padding: 60px 24px 40px; }
   }
 </style>
@@ -325,32 +338,17 @@
   </section>
 
   <section class="shop">
-    <div class="painting-card">
-      <div class="painting-img p1"><span>painting photo</span></div>
-      <h3>TITLE</h3>
-      <div class="price">$TBD</div>
-    </div>
-    <div class="painting-card">
-      <div class="painting-img p2">
-        <span class="sold-tag">Placeholder </span>
-        <span>painting photo</span>
+    <div class="featured-artwork">
+      <div class="painting-card">
+        <div class="painting-img p1"><span>painting photo</span></div>
+        <h3>TITLE</h3>
+        <div class="price">$TBD</div>
       </div>
-      <h3>TITLE</h3>
-      <div class="price">$TBD</div>
-    </div>
-    <div class="painting-card">
-      <div class="painting-img p3"><span>painting photo</span></div>
-      <h3>TITLE</h3>
-      <div class="price">$TBD</div>
+      <p class="artwork-description">Write a paragraph about this featured artwork here.</p>
     </div>
   </section>
 
-  <section class="insta-section">
-    <div class="insta-tile"></div>
-    <div class="insta-copy">
-      <a href="https://instagram.com/jakeyeh_art" class="section-label">Instagram — @jakeyeh_art</a>
-    </div>
-  </section>
+
 
   <footer>
     <a href="#" class="section-label">INQUIRE</a>

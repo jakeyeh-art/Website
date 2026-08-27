@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SKETCHBOOKS | JAKE YEN PO YEH</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bungee&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root { --cream: #faf8f4; --ink: #2b2822; --olive: #7d7758; --olive-dark: #4f4a37; --line: #c9c2ae; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Jost', sans-serif; color: var(--ink); background: var(--cream); -webkit-font-smoothing: antialiased; }
+  a { color: inherit; text-decoration: none; }
+  nav { display: flex; align-items: center; justify-content: space-between; padding: 28px 48px; border-bottom: 1px solid var(--line); }
+  .logo { font-family: 'Bungee', sans-serif; font-size: 1.35rem; letter-spacing: 0.04em; text-transform: uppercase; }
+  .nav-links { display: flex; gap: 36px; list-style: none; }
+  .nav-links a { font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; padding-bottom: 4px; border-bottom: 1px solid transparent; }
+  .nav-links a.active, .nav-links a:hover { border-bottom-color: var(--ink); }
+  .nav-right svg { width: 17px; height: 17px; display: block; }
+  .content { max-width: 900px; margin: 0 auto; padding: 64px 32px 90px; text-align: center; }
+  .eyebrow { color: var(--olive); font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 18px; }
+  h1 { font-family: 'Cormorant Garamond', serif; font-size: 3.5rem; font-weight: 500; margin-bottom: 34px; }
+  .viewer { display: grid; gap: 22px; }
+  .sketchbook-image { aspect-ratio: 4 / 3; width: 100%; display: grid; place-items: center; padding: 30px; background: #e8e1d2 url('images/hero.jpeg') center / cover; background-blend-mode: soft-light; border: 1px solid var(--line); }
+  .sketchbook-image span { padding: 12px 16px; background: rgba(250, 248, 244, 0.9); font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; }
+  .sketchbook-image img { display: none; width: 100%; height: 100%; object-fit: contain; }
+  .controls { display: flex; justify-content: space-between; gap: 16px; }
+  .controls button { min-width: 120px; border: 1px solid var(--ink); background: transparent; color: var(--ink); cursor: pointer; padding: 11px 16px; font: 0.72rem 'Jost', sans-serif; letter-spacing: 0.12em; text-transform: uppercase; }
+  .controls button:hover:not(:disabled) { background: var(--ink); color: #fff; }
+  .controls button:disabled { opacity: 0.35; cursor: default; }
+  .counter { color: #6b6656; font-size: 0.75rem; align-self: center; }
+  @media (max-width: 900px) { nav { padding: 20px 24px; } .nav-links { display: none; } .content { padding: 48px 24px 70px; } h1 { font-size: 3rem; } }
+</style>
+</head>
+<body>
+  <nav>
+    <div class="logo">JAKE YEN PO YEH</div>
+    <ul class="nav-links">
+      <li><a href="index.html">HOME</a></li>
+      <li><a href="artworks.html">ARTWORKS</a></li>
+      <li><a href="inquire.html">INQUIRE</a></li>
+      <li><a href="about.html">ABOUT</a></li>
+    </ul>
+    <div class="nav-right">
+      <a href="https://instagram.com/jakeyeh_art" aria-label="Visit Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="0.6" fill="currentColor" stroke="none"/></svg></a>
+    </div>
+  </nav>
+
+  <main class="content">
+    <div class="eyebrow">Pages from the studio</div>
+    <h1>Sketchbooks</h1>
+    <div class="viewer">
+      <div class="sketchbook-image">
+        <img id="sketchbook-photo" alt="Sketchbook page">
+        <span id="photo-placeholder">Add sketchbook photos to the images folder</span>
+      </div>
+      <div class="controls">
+        <button id="previous" type="button">Previous</button>
+        <span class="counter" id="counter">1 / 3</span>
+        <button id="next" type="button">Next</button>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    const photos = ['images/sketchbook-1.jpeg', 'images/sketchbook-2.jpeg', 'images/sketchbook-3.jpeg'];
+    let currentPhoto = 0;
+    const image = document.getElementById('sketchbook-photo');
+    const placeholder = document.getElementById('photo-placeholder');
+    const counter = document.getElementById('counter');
+    const previous = document.getElementById('previous');
+    const next = document.getElementById('next');
+
+    function showPhoto() {
+      image.src = photos[currentPhoto];
+      image.alt = `Sketchbook page ${currentPhoto + 1}`;
+      image.onload = () => { image.style.display = 'block'; placeholder.style.display = 'none'; };
+      image.onerror = () => { image.style.display = 'none'; placeholder.style.display = 'block'; };
+      counter.textContent = `${currentPhoto + 1} / ${photos.length}`;
+      previous.disabled = currentPhoto === 0;
+      next.disabled = currentPhoto === photos.length - 1;
+    }
+
+    previous.addEventListener('click', () => { currentPhoto -= 1; showPhoto(); });
+    next.addEventListener('click', () => { currentPhoto += 1; showPhoto(); });
+    showPhoto();
+  </script>
+</body>
+</html>
