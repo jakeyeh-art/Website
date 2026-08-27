@@ -23,7 +23,6 @@
   .eyebrow { color: var(--olive); font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 22px; }
   h1 { font-family: 'Cormorant Garamond', serif; font-size: 5.5rem; font-weight: 500; line-height: 0.95; margin-bottom: 40px; }
   .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
-  .about-grid > div:first-child { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
   .about-grid p { font-family: 'Cormorant Garamond', serif; font-size: 1.35rem; line-height: 1.55; }
   .about-grid p + p { margin-top: 0; }
   .details { margin-top: 100px; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; border-top: 1px solid var(--line); padding-top: 34px; }
@@ -32,7 +31,7 @@
   .details ul { list-style: none; display: grid; gap: 13px; }
   .details li { font-size: 0.9rem; line-height: 1.5; }
   .signature { font-family: 'Gloria Hallelujah', cursive; font-size: 1.15rem; margin-top: 36px; }
-  @media (max-width: 900px) { nav { padding: 20px 24px; flex-wrap: wrap; row-gap: 14px; } .nav-links { order: 3; flex-basis: 100%; justify-content: space-between; gap: 12px; } .nav-links a { font-size: 0.65rem; } .content { padding: 64px 24px 90px; } .about-grid, .details { grid-template-columns: 1fr; gap: 30px; } .about-grid > div:first-child { display: block; } .about-grid p + p { margin-top: 24px; } .details { margin-top: 70px; } h1 { font-size: 3rem; } }
+  @media (max-width: 900px) { nav { padding: 20px 24px; flex-wrap: wrap; row-gap: 14px; } .nav-links { order: 3; flex-basis: 100%; justify-content: space-between; gap: 12px; } .nav-links a { font-size: 0.65rem; } .content { padding: 64px 24px 90px; } .about-grid, .details { grid-template-columns: 1fr; gap: 30px; } .about-grid p + p { margin-top: 24px; } .details { margin-top: 70px; } h1 { font-size: 3rem; } }
 </style>
 </head>
 <body>
@@ -53,14 +52,10 @@
     <div class="eyebrow">The artist</div>
     <h1>About</h1>
     <div class="about-grid">
-      <div>
-        <p>Jake Yeh is a Taiwanese American artist born in Taipei, Taiwan. Working primarily in oil painting and drawing, his current practice focuses on landscape painting and portraiture from direct observation. He divides his time between studio work and painting en plein air, carrying a sketchbook to record observations from everyday life.</p>
-        <p>Yeh's work is driven by a desire to balance creative expression with direct observation. He enjoys the challenge—and the humility—of translating and abstracting the world before his very eyes onto a blank surface. For Yeh, painting is an opportunity to continue the tradition of "pushing colored dirt" that stretches back to the dawn of humanity, and through it, to cultivate patience and discipline.</p>
-      </div>
-      <div>
-
-      </div>
+      <p>Jake Yeh is a Taiwanese American artist born in Taipei, Taiwan. Working primarily in oil painting and drawing, his current practice focuses on landscape painting and portraiture from direct observation. He divides his time between studio work and painting en plein air, carrying a sketchbook to record observations from everyday life.</p>
+      <p>Yeh's work is driven by a desire to balance creative expression with direct observation. He enjoys the challenge—and the humility—of translating and abstracting the world before his very eyes onto a blank surface. For Yeh, painting is an opportunity to continue the tradition of "pushing colored dirt" that stretches back to the dawn of humanity, and through it, to cultivate patience and discipline.</p>
     </div>
+    <div class="signature">Jake Yeh</div>
 
     <div class="details">
       <div>
