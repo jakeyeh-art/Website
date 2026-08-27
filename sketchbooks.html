@@ -30,6 +30,8 @@
   .controls button:hover:not(:disabled) { background: var(--ink); color: #fff; }
   .controls button:disabled { opacity: 0.35; cursor: default; }
   .counter { color: #6b6656; font-size: 0.75rem; align-self: center; }
+  .artworks-link { position: fixed; right: 24px; bottom: 24px; z-index: 5; padding: 10px 14px; background: var(--olive-dark); color: #fff; font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; }
+  .artworks-link:hover { background: var(--olive); }
   @media (max-width: 900px) { nav { padding: 20px 24px; } .nav-links { display: none; } .content { padding: 48px 24px 70px; } h1 { font-size: 3rem; } }
 </style>
 </head>
@@ -60,6 +62,8 @@
       </div>
     </div>
   </main>
+
+  <a class="artworks-link" href="artworks.html">ARTWORKS</a>
 
   <script>
     const contentsUrl = 'https://api.github.com/repos/jakeyeh-art/Website/contents/images/sketches?ref=main';
