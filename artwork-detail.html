@@ -31,6 +31,16 @@
   .meta strong { font-weight: 500; }
   .inquire-button { display: inline-block; padding: 13px 20px; background: var(--olive); color: #fff; font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; }
   .inquire-button:hover { background: var(--olive-dark); }
+  footer { background: var(--olive); color: #f4f1e8; padding: 44px 32px 24px; text-align: center; }
+  footer h2 { font-size: 2rem; font-weight: 500; letter-spacing: 0.04em; margin-bottom: 10px; }
+  footer p.sub { color: #e5e1d2; font-size: 0.85rem; margin-bottom: 26px; }
+  .subscribe-form { display: flex; max-width: 420px; margin: 0 auto; gap: 10px; }
+  .subscribe-form input { flex: 1; min-width: 0; padding: 12px 14px; border: none; border-radius: 1px; font: 0.85rem 'Jost', sans-serif; }
+  .subscribe-form button { padding: 12px 20px; border: none; background: var(--olive-dark); color: #fff; font: 0.72rem 'Jost', sans-serif; letter-spacing: 0.12em; text-transform: uppercase; cursor: pointer; }
+  .subscribe-form button:hover { background: #3c3829; }
+  .footer-bottom { max-width: 1160px; margin: 38px auto 0; padding-top: 22px; border-top: 1px solid rgba(244,241,232,0.25); display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 14px 24px; font-size: 0.7rem; letter-spacing: 0.05em; }
+  .footer-bottom .made-with { color: #cfcab8; }
+  .footer-links { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; }
   @media (max-width: 900px) { nav { padding: 20px 24px; flex-wrap: wrap; row-gap: 14px; } .nav-links { display: none; } .content { padding: 46px 24px 70px; } .artwork-detail { grid-template-columns: 1fr; gap: 36px; } .detail-copy h1 { font-size: 3rem; } .detail-top { align-items: flex-start; flex-wrap: wrap; } }
 </style>
 </head>
@@ -56,8 +66,9 @@
         <h1 id="detail-title"></h1>
         <div class="detail-top">
           <div class="meta">
-            <div><strong>Price:</strong> <span id="detail-price"></span></div>
-            <div><strong>Size:</strong> <span id="detail-size"></span></div>
+            <div id="detail-medium-year"></div>
+            <div id="detail-size"></div>
+            <div id="detail-price"></div>
           </div>
           <a class="inquire-button" id="inquire-link" href="inquire.html">INQUIRE</a>
         </div>
@@ -66,16 +77,34 @@
     </div>
   </main>
 
+  <footer>
+    <h2>Subscribe</h2>
+    <p class="sub">Subscribe with your e-mail address to hear more about my works.</p>
+    <form class="subscribe-form" action="https://formspree.io/f/xjyvbdlr" method="POST">
+      <input type="email" name="email" placeholder="Email Address" autocomplete="email" required>
+      <button type="submit">Subscribe</button>
+    </form>
+    <div class="footer-bottom">
+      <div class="made-with">Built by Jake Yeh</div>
+      <div class="footer-links">
+        <a href="artworks.html">Artworks</a>
+        <a href="about.html">About</a>
+        <a href="inquire.html">Inquire</a>
+        <a href="https://instagram.com/jakeyeh_art">Instagram</a>
+      </div>
+    </div>
+  </footer>
+
   <script>
     const artworks = {
-      'woman-on-the-rock': { title: 'Woman on the Rock, River Study', price: '$450.00', size: '12 x 16 in', color: '#d9dfbd', description: 'A direct observation study of a figure resting beside the river, painted with attention to the shifting light and quiet atmosphere.' },
-      'as-we-grow-old': { title: 'As We Grow Old', price: '$1,200.00', size: '18 x 24 in', color: '#cbd4d8', description: 'A portrait study exploring time, presence, and the subtle changes held in an observed face.' },
-      'anderson-park': { title: 'Anderson Park, Late Summer', price: '$320.00', size: '11 x 14 in', color: '#e8d99f', description: 'A late-summer landscape study focused on warm light, open air, and the changing greens of the park.' },
-      'backyard-morning-light': { title: 'Backyard, Morning Light', price: '$280.00', size: '9 x 12 in', color: '#dfcfad', description: 'A small plein air study of morning light moving across a familiar backyard.' },
-      'pear-and-knife': { title: 'Study of a Pear and Knife', price: '$190.00', size: '8 x 10 in', color: '#ead48a', description: 'A still life study of simple objects, observing their weight, color, and relationship to light.' },
-      'old-barn': { title: 'Old Barn, West Orange', price: '$400.00', size: '12 x 16 in', color: '#c6ad82', description: 'A landscape study of an old barn, built from direct observation and the muted colors of the surrounding fields.' },
-      'garden-path': { title: 'Garden Path in Late Bloom', price: '$310.00', size: '11 x 14 in', color: '#cbd5ab', description: 'A garden path observed in the final weeks of bloom, balancing structure with the looseness of growing forms.' },
-      'rooftops-at-dusk': { title: 'Rooftops at Dusk', price: '$380.00', size: '12 x 16 in', color: '#918a76', description: 'An evening city study concerned with the quiet geometry of rooftops as daylight gives way to dusk.' }
+      'woman-on-the-rock': { title: 'Woman on the Rock, River Study', medium: 'Oil on canvas', year: '2025', price: '$450.00', size: '12 x 16 in', color: '#d9dfbd', description: 'A direct observation study of a figure resting beside the river, painted with attention to the shifting light and quiet atmosphere.' },
+      'as-we-grow-old': { title: 'As We Grow Old', medium: 'Oil on canvas', year: '2025', price: '$1,200.00', size: '18 x 24 in', color: '#cbd4d8', description: 'A portrait study exploring time, presence, and the subtle changes held in an observed face.' },
+      'anderson-park': { title: 'Anderson Park, Late Summer', medium: 'Oil on canvas', year: '2025', price: '$320.00', size: '11 x 14 in', color: '#e8d99f', description: 'A late-summer landscape study focused on warm light, open air, and the changing greens of the park.' },
+      'backyard-morning-light': { title: 'Backyard, Morning Light', medium: 'Oil on canvas', year: '2025', price: '$280.00', size: '9 x 12 in', color: '#dfcfad', description: 'A small plein air study of morning light moving across a familiar backyard.' },
+      'pear-and-knife': { title: 'Study of a Pear and Knife', medium: 'Oil on canvas', year: '2025', price: '$190.00', size: '8 x 10 in', color: '#ead48a', description: 'A still life study of simple objects, observing their weight, color, and relationship to light.' },
+      'old-barn': { title: 'Old Barn, West Orange', medium: 'Oil on canvas', year: '2025', price: '$400.00', size: '12 x 16 in', color: '#c6ad82', description: 'A landscape study of an old barn, built from direct observation and the muted colors of the surrounding fields.' },
+      'garden-path': { title: 'Garden Path in Late Bloom', medium: 'Oil on canvas', year: '2025', price: '$310.00', size: '11 x 14 in', color: '#cbd5ab', description: 'A garden path observed in the final weeks of bloom, balancing structure with the looseness of growing forms.' },
+      'rooftops-at-dusk': { title: 'Rooftops at Dusk', medium: 'Oil on canvas', year: '2025', price: '$380.00', size: '12 x 16 in', color: '#918a76', description: 'An evening city study concerned with the quiet geometry of rooftops as daylight gives way to dusk.' }
     };
 
     const id = new URLSearchParams(window.location.search).get('id');
@@ -86,12 +115,15 @@
       artwork.title = uploadedTitle;
       artwork.description = 'Theres something magical about this piece in the way it opens up a fearlessness in me, a chance to play with the materiality of the paint to its greater potential.';
       if (uploadedTitle.toLowerCase() === 'icing on the cake') {
+        artwork.medium = "Oil on Arches Oil Paper";
+        artwork.year = '2025';
         artwork.price = '$5,000.00';
         artwork.size = '16 x 24 in';
       }
     }
     document.title = `${artwork.title} | JAKE YEN PO YEH`;
     document.getElementById('detail-title').textContent = artwork.title;
+    document.getElementById('detail-medium-year').textContent = `${artwork.medium}, ${artwork.year}`;
     document.getElementById('detail-price').textContent = artwork.price;
     document.getElementById('detail-size').textContent = artwork.size;
     document.getElementById('detail-description').textContent = artwork.description;

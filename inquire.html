@@ -31,6 +31,16 @@
   button { justify-self: start; border: 0; background: var(--olive); color: #fff; cursor: pointer; padding: 14px 22px; font: 0.72rem 'Jost', sans-serif; letter-spacing: 0.14em; text-transform: uppercase; }
   button:hover { background: #5f5a42; }
   .form-note { color: #6b6656; font-size: 0.78rem; line-height: 1.5; }
+  footer { background: var(--olive); color: #f4f1e8; padding: 44px 32px 24px; text-align: center; }
+  footer h2 { font-size: 2rem; font-weight: 500; letter-spacing: 0.04em; margin-bottom: 10px; }
+  footer p.sub { color: #e5e1d2; font-size: 0.85rem; margin-bottom: 26px; }
+  .subscribe-form { display: flex; max-width: 420px; margin: 0 auto; gap: 10px; }
+  .subscribe-form input { flex: 1; min-width: 0; padding: 12px 14px; border: none; border-radius: 1px; font: 0.85rem 'Jost', sans-serif; }
+  .subscribe-form button { padding: 12px 20px; border: none; background: var(--olive-dark); color: #fff; font: 0.72rem 'Jost', sans-serif; letter-spacing: 0.12em; text-transform: uppercase; cursor: pointer; }
+  .subscribe-form button:hover { background: #3c3829; }
+  .footer-bottom { max-width: 1160px; margin: 38px auto 0; padding-top: 22px; border-top: 1px solid rgba(244,241,232,0.25); display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 14px 24px; font-size: 0.7rem; letter-spacing: 0.05em; }
+  .footer-bottom .made-with { color: #cfcab8; }
+  .footer-links { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; }
   @media (max-width: 900px) { nav { padding: 20px 24px; flex-wrap: wrap; row-gap: 14px; } .nav-links { order: 3; flex-basis: 100%; justify-content: space-between; gap: 12px; } .nav-links a { font-size: 0.65rem; } .content { padding: 64px 24px 90px; } h1 { font-size: 3rem; } }
 </style>
 </head>
@@ -60,5 +70,23 @@
       <p class="form-note">Your message will be sent securely. I will respond by email.</p>
     </form>
   </main>
+
+  <footer>
+    <h2>Subscribe</h2>
+    <p class="sub">Subscribe with your e-mail address to hear more about my works.</p>
+    <form class="subscribe-form" action="https://formspree.io/f/xjyvbdlr" method="POST">
+      <input type="email" name="email" placeholder="Email Address" autocomplete="email" required>
+      <button type="submit">Subscribe</button>
+    </form>
+    <div class="footer-bottom">
+      <div class="made-with">Built by Jake Yeh</div>
+      <div class="footer-links">
+        <a href="artworks.html">Artworks</a>
+        <a href="about.html">About</a>
+        <a href="inquire.html">Inquire</a>
+        <a href="https://instagram.com/jakeyeh_art">Instagram</a>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>
