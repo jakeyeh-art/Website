@@ -79,7 +79,7 @@
     };
 
     const id = new URLSearchParams(window.location.search).get('id');
-    const imageUrl = new URLSearchParams(window.location.search).get('image');
+    const imageName = new URLSearchParams(window.location.search).get('image');
     const uploadedTitle = new URLSearchParams(window.location.search).get('title');
     const artwork = artworks[id] || artworks['woman-on-the-rock'];
     if (uploadedTitle) {
@@ -96,7 +96,8 @@
     document.getElementById('detail-size').textContent = artwork.size;
     document.getElementById('detail-description').textContent = artwork.description;
     document.getElementById('detail-image').style.setProperty('--artwork-color', artwork.color);
-    if (imageUrl) {
+    if (imageName) {
+      const imageUrl = `https://raw.githubusercontent.com/jakeyeh-art/Website/main/images/artworks/${encodeURIComponent(imageName)}`;
       document.getElementById('detail-image').innerHTML = `<img src="${imageUrl}" alt="${artwork.title}">`;
     }
     document.getElementById('inquire-link').href = `inquire.html?artwork=${encodeURIComponent(artwork.title)}`;
