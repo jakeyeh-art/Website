@@ -43,6 +43,7 @@
   .made-with img { display: block; width: 88px; height: auto; }
   .footer-links { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; }
   .footer-bottom .subscribe-form { position: absolute; top: 50%; left: 50%; margin: 0; transform: translate(-50%, -50%); }
+  @media (max-width: 600px) { .footer-bottom { padding: 18px 0 0; display: grid; grid-template-columns: auto 1fr; gap: 16px 12px; } .footer-bottom .subscribe-form { position: static; grid-column: 1 / -1; grid-row: 1; width: 100%; transform: none; } .footer-bottom .made-with { grid-column: 1; grid-row: 2; margin-right: 0; align-self: center; } .made-with img { width: 48px; } .footer-links { grid-column: 2; grid-row: 2; gap: 8px 12px; justify-content: flex-end; align-items: center; } }
   @media (max-width: 900px) { nav { padding: 20px 24px; flex-wrap: wrap; row-gap: 14px; } .nav-links { order: 3; flex-basis: 100%; justify-content: space-between; gap: 12px; } .nav-links a { font-size: 0.65rem; } .content { padding: 64px 24px 90px; } h1 { font-size: 3rem; } }
 </style>
 </head>

@@ -193,6 +193,14 @@
   .footer-links { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; }
   .footer-bottom .subscribe-form { position: absolute; top: 50%; left: 50%; margin: 0; transform: translate(-50%, -50%); }
 
+  @media (max-width: 600px) {
+    .footer-bottom { padding: 18px 0 0; display: grid; grid-template-columns: auto 1fr; gap: 16px 12px; }
+    .footer-bottom .subscribe-form { position: static; grid-column: 1 / -1; grid-row: 1; width: 100%; transform: none; }
+    .footer-bottom .made-with { grid-column: 1; grid-row: 2; margin-right: 0; align-self: center; }
+    .made-with img { width: 48px; }
+    .footer-links { grid-column: 2; grid-row: 2; gap: 8px 12px; justify-content: flex-end; align-items: center; }
+  }
+
   @media (max-width: 800px) {
     .page { padding: 30px 24px 70px; }
     .artwork-grid { gap: 20px; }
@@ -266,7 +274,19 @@
         return response.json();
       })
       .then(files => {
-        const artworks = files.filter(file => file.type === 'file' && imageExtensions.test(file.name)).sort((a, b) => a.name.localeCompare(b.name));
+        const artworkOrder = [
+          'Icing On The Cake.jpeg'
+        ];
+        const artworks = files
+          .filter(file => file.type === 'file' && imageExtensions.test(file.name))
+          .sort((a, b) => {
+            const indexA = artworkOrder.indexOf(a.name);
+            const indexB = artworkOrder.indexOf(b.name);
+            if (indexA === -1 && indexB === -1) return a.name.localeCompare(b.name);
+            if (indexA === -1) return 1;
+            if (indexB === -1) return -1;
+            return indexA - indexB;
+          });
         if (!artworks.length) {
           showMessage('Add artwork photos to images/artworks');
           return;
