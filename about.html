@@ -22,7 +22,7 @@
   .content { max-width: 930px; margin: 0 auto; padding: 88px 32px 120px; }
   .eyebrow { color: var(--olive); font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 22px; }
   h1 { font-family: 'Jost', sans-serif; font-size: 5.5rem; font-weight: 500; line-height: 0.95; margin-bottom: 40px; }
-  .about-intro { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 56px; align-items: start; }
+  .about-intro { display: flex; flex-direction: column; gap: 32px; align-items: flex-start; }
   .about-grid { display: grid; gap: 24px; align-items: start; }
   .about-grid p { font-family: 'Jost', sans-serif; font-size: 1.35rem; line-height: 1.55; }
   .headshot { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; display: block; }
@@ -66,12 +66,12 @@
     <div class="eyebrow">The artist</div>
     <h1>About</h1>
     <div class="about-intro">
+      <img class="headshot" src="images/Headshot.png" alt="Headshot of Jake Yeh">
       <div class="about-grid">
         <p>Jake Yeh is a Taiwanese American artist born in Taipei, Taiwan. Working primarily in oil painting and drawing, his current practice focuses on landscape painting and portraiture from direct observation. He divides his time between studio work and painting en plein air, carrying a sketchbook to record observations from everyday life.</p>
         <p>Yeh's work is driven by a desire to balance creative expression with direct observation. He enjoys the challenge—and the humility—of translating and abstracting the world before his very eyes onto a blank surface. For Yeh, painting is an opportunity to continue the tradition of "pushing colored dirt" that stretches back to the dawn of humanity, and through it, to cultivate patience and discipline.</p>
         <div class="signature">Jake Yen Po Yeh 葉彥伯</div>
       </div>
-      <img class="headshot" src="images/Headshot.png" alt="Headshot of Jake Yeh">
     </div>
 
     <div class="details">

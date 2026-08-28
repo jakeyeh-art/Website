@@ -21,8 +21,8 @@
   .content { max-width: 1160px; margin: 0 auto; padding: 64px 40px 100px; }
   .back-link { display: inline-block; margin-bottom: 42px; color: var(--olive); font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; }
   .artwork-detail { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(280px, 0.75fr); gap: 64px; align-items: center; }
-  .detail-image { aspect-ratio: 4 / 3; display: grid; place-items: center; background: var(--artwork-color, #e8e1d2); }
-  .detail-image img { width: 100%; height: 100%; object-fit: contain; display: block; }
+  .detail-image { width: 100%; min-height: 280px; display: grid; place-items: center; background: var(--artwork-color, #e8e1d2); }
+  .detail-image img { max-width: 100%; max-height: calc(100vh - 180px); width: auto; height: auto; object-fit: contain; display: block; }
   .detail-image span { padding: 12px 16px; background: rgba(250,248,244,0.86); font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; }
   .detail-copy h1 { font-family: 'Jost', sans-serif; font-size: 3.5rem; font-weight: 500; line-height: 1; margin-bottom: 24px; }
   .detail-copy p { font-family: 'Jost', sans-serif; font-size: 1.3rem; line-height: 1.55; }
@@ -56,8 +56,9 @@
         <h1 id="detail-title"></h1>
         <div class="detail-top">
           <div class="meta">
-            <div><strong>Price:</strong> <span id="detail-price"></span></div>
-            <div><strong>Size:</strong> <span id="detail-size"></span></div>
+            <div id="detail-medium-row"><span id="detail-medium"></span><span id="detail-year-separator">, </span><span id="detail-year"></span></div>
+            <div><span id="detail-size"></span></div>
+            <div><span id="detail-price"></span></div>
           </div>
           <a class="inquire-button" id="inquire-link" href="inquire.html">INQUIRE</a>
         </div>
@@ -88,12 +89,29 @@
       if (uploadedTitle.toLowerCase() === 'icing on the cake') {
         artwork.price = '$5,000.00';
         artwork.size = '16 x 24 in';
+        artwork.year = '2025';
+        artwork.medium = 'Oil on Arches Oil Paper';
+      }
+      if (uploadedTitle.toLowerCase() === 'benson') {
+        artwork.price = 'Private collection';
+        artwork.size = '5 x 7 in';
+        artwork.year = '2026';
+        artwork.medium = 'Oil on board';
+        artwork.description = 'Painted my friend Benson from a photo I took during a casual afternoon barbecue.';
       }
     }
     document.title = `${artwork.title} | JAKE YEN PO YEH`;
     document.getElementById('detail-title').textContent = artwork.title;
     document.getElementById('detail-price').textContent = artwork.price;
     document.getElementById('detail-size').textContent = artwork.size;
+    if (artwork.year) {
+      document.getElementById('detail-year').textContent = artwork.year;
+    }
+    if (artwork.medium) {
+      document.getElementById('detail-medium').textContent = artwork.medium;
+    } else {
+      document.getElementById('detail-medium-row').hidden = true;
+    }
     document.getElementById('detail-description').textContent = artwork.description;
     document.getElementById('detail-image').style.setProperty('--artwork-color', artwork.color);
     if (imageName) {
