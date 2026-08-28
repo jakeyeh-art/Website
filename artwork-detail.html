@@ -97,7 +97,9 @@
     document.getElementById('detail-description').textContent = artwork.description;
     document.getElementById('detail-image').style.setProperty('--artwork-color', artwork.color);
     if (imageName) {
-      const imageUrl = `https://raw.githubusercontent.com/jakeyeh-art/Website/main/images/artworks/${encodeURIComponent(imageName)}`;
+      const imageUrl = imageName.startsWith('http')
+        ? imageName
+        : `https://raw.githubusercontent.com/jakeyeh-art/Website/main/images/artworks/${encodeURIComponent(imageName)}`;
       document.getElementById('detail-image').innerHTML = `<img src="${imageUrl}" alt="${artwork.title}">`;
     }
     document.getElementById('inquire-link').href = `inquire.html?artwork=${encodeURIComponent(artwork.title)}`;
