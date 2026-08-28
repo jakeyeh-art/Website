@@ -293,8 +293,8 @@
         }
         artworkGrid.innerHTML = artworks.map(file => `
           <div class="painting-card">
-            <a class="artwork-link" href="artwork-detail.html?image=${encodeURIComponent(file.download_url)}&title=${encodeURIComponent(titleFromFilename(file.name))}">
-              <div class="painting-img"><img src="${file.download_url}" alt="${titleFromFilename(file.name)}" loading="lazy"></div>
+            <a class="artwork-link" href="artwork-detail.html?image=${encodeURIComponent(file.name)}&title=${encodeURIComponent(titleFromFilename(file.name))}">
+              <div class="painting-img"><img src="https://raw.githubusercontent.com/jakeyeh-art/Website/main/images/artworks/${encodeURIComponent(file.name)}" alt="${titleFromFilename(file.name)}" loading="lazy"></div>
               <h3>${titleFromFilename(file.name)}</h3>
             </a>
           </div>
