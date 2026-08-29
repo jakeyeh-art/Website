@@ -84,20 +84,22 @@
     const uploadedTitle = new URLSearchParams(window.location.search).get('title');
     const artwork = artworks[id] || artworks['woman-on-the-rock'];
     if (uploadedTitle) {
-      artwork.title = uploadedTitle;
-      artwork.description = 'Theres something magical about this piece in the way it opens up a fearlessness in me, a chance to play with the materiality of the paint to its greater potential.';
-      if (uploadedTitle.toLowerCase() === 'icing on the cake') {
-        artwork.price = '$5,000.00';
-        artwork.size = '16 x 24 in';
-        artwork.year = '2025';
-        artwork.medium = 'Oil on Arches Oil Paper';
-      }
-      if (uploadedTitle.toLowerCase() === 'benson') {
-        artwork.price = 'Private collection';
-        artwork.size = '5 x 7 in';
-        artwork.year = '2026';
-        artwork.medium = 'Oil on board';
-        artwork.description = 'Painted my friend Benson from a photo I took during a casual afternoon barbecue.';
+      const titleMetadata = {
+        'fahad': { title: 'Fahad', price: '$5,000.00', size: '16 x 12 in', year: '2025', medium: 'Oil on Arches Oil Paper', description: 'A direct, observant portrait study exploring weight, presence, and the quiet atmosphere of the subject.' },
+        'lyla': { title: 'Lyla Baby and Toys', price: '$5,000.00', size: '20 x 16 in', year: '2024', medium: 'Oil on Canvas', description: 'An intimate, playful study of Lyla surrounded by the warmth and tenderness of childhood objects.' },
+        'lyla baby and toys': { title: 'Lyla Baby and Toys', price: '$5,000.00', size: '20 x 16 in', year: '2024', medium: 'Oil on Canvas', description: 'An intimate, playful study of Lyla surrounded by the warmth and tenderness of childhood objects.' },
+        'river trip': { title: 'River Trip', price: '$5,000.00', size: '14 x 11 in', year: '2026', medium: 'Oil on Board', description: 'A compact landscape study centered on movement, memory, and the shifting edge between water and shore.' },
+        'untitled': { title: 'Untitled', price: '$5,000.00', size: '12 x 9 in', year: '2026', medium: 'Oil on Paper', description: 'A small abstracted work focused on gesture, material, and the quiet drama of color and rhythm.' },
+        'icing on the cake': { title: 'Icing on the Cake', price: '$5,000.00', size: '16 x 24 in', year: '2025', medium: 'Oil on Arches Oil Paper', description: 'Theres something magical about this piece in the way it opens up a fearlessness in me, a chance to play with the materiality of the paint to its greater potential.' },
+        'benson': { title: 'Benson', price: 'Private collection', size: '5 x 7 in', year: '2026', medium: 'Oil on board', description: 'Painted my friend Benson from a photo I took during a casual afternoon barbecue.' }
+      };
+      const normalizedTitle = uploadedTitle.trim().toLowerCase();
+      const matchingMetadata = titleMetadata[normalizedTitle];
+      if (matchingMetadata) {
+        Object.assign(artwork, matchingMetadata);
+      } else {
+        artwork.title = uploadedTitle;
+        artwork.description = 'Theres something magical about this piece in the way it opens up a fearlessness in me, a chance to play with the materiality of the paint to its greater potential.';
       }
     }
     document.title = `${artwork.title} | JAKE YEN PO YEH`;

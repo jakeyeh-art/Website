@@ -261,7 +261,15 @@
     const contentsUrl = 'https://api.github.com/repos/jakeyeh-art/Website/contents/images/artworks?ref=main';
 
     function titleFromFilename(filename) {
-      return filename.replace(/\.[^.]+$/, '').replace(/[-_]+/g, ' ').replace(/\b\w/g, character => character.toUpperCase());
+      const normalizedName = filename.replace(/\.[^.]+$/, '').replace(/[-_]+/g, ' ').trim();
+      const titleOverrides = {
+        'Fahad': 'Fahad',
+        'Lyla': 'Lyla Baby and Toys',
+        'River Trip': 'River Trip',
+        'Untitled': 'Untitled'
+      };
+      const baseTitle = normalizedName.replace(/\b\w/g, character => character.toUpperCase());
+      return titleOverrides[baseTitle] || baseTitle;
     }
 
     function showMessage(message) {
