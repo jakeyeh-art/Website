@@ -25,7 +25,7 @@
   .about-intro { display: flex; flex-direction: column; gap: 32px; align-items: flex-start; }
   .about-grid { display: grid; gap: 24px; align-items: start; }
   .about-grid p { font-family: 'Jost', sans-serif; font-size: 1.35rem; line-height: 1.55; }
-  .headshot { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; display: block; }
+  .headshot { width: 50%; max-width: 420px; aspect-ratio: 1 / 1; object-fit: cover; display: block; }
   .details { margin-top: 100px; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; border-top: 1px solid var(--line); padding-top: 34px; }
   .details-section + .details-section { margin-top: 54px; }
   .details h2 { font-family: 'Jost', sans-serif; font-size: 2rem; font-weight: 500; margin-bottom: 20px; }
@@ -45,7 +45,7 @@
   .footer-links { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; }
   .footer-bottom .subscribe-form { position: absolute; top: 50%; left: 50%; margin: 0; transform: translate(-50%, -50%); }
   @media (max-width: 600px) { .footer-bottom { padding: 18px 0 0; display: grid; grid-template-columns: auto 1fr; gap: 16px 12px; } .footer-bottom .subscribe-form { position: static; grid-column: 1 / -1; grid-row: 1; width: 100%; transform: none; } .footer-bottom .made-with { grid-column: 1; grid-row: 2; margin-right: 0; align-self: center; } .made-with img { width: 48px; } .footer-links { grid-column: 2; grid-row: 2; gap: 8px 12px; justify-content: flex-end; align-items: center; } }
-  @media (max-width: 900px) { nav { padding: 20px 24px; flex-wrap: wrap; row-gap: 14px; } .nav-links { order: 3; flex-basis: 100%; justify-content: space-between; gap: 12px; } .nav-links a { font-size: 0.65rem; } .content { padding: 64px 24px 90px; } .about-intro, .details { grid-template-columns: 1fr; gap: 30px; } .headshot { max-width: 300px; } .details { margin-top: 70px; } h1 { font-size: 3rem; } }
+  @media (max-width: 900px) { nav { padding: 20px 24px; flex-wrap: wrap; row-gap: 14px; } .nav-links { order: 3; flex-basis: 100%; justify-content: space-between; gap: 12px; } .nav-links a { font-size: 0.65rem; } .content { padding: 64px 24px 90px; } .about-intro, .details { grid-template-columns: 1fr; gap: 30px; } .headshot { width: 50%; max-width: 300px; } .details { margin-top: 70px; } h1 { font-size: 3rem; } }
 </style>
 </head>
 <body>

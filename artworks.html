@@ -94,7 +94,11 @@
   }
 
   .artwork-link { display: block; }
-  .artwork-link:hover .painting-img { outline: 2px solid var(--olive); outline-offset: 4px; }
+  .artwork-link:hover .painting-img {
+    outline: 2px solid transparent;
+    outline-offset: 0;
+    background: transparent;
+  }
 
   .painting-img {
     height: min(70vh, 720px);
