@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="images/Stamp.png" type="image/png">
 <title>HOME | JAKE YEN PO YEH </title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Gloria+Hallelujah&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
@@ -48,9 +48,13 @@
   .logo {
     font-family: 'Bungee', sans-serif;
     font-size: 1.35rem;
+    line-height: 0.94;
     letter-spacing: 0.04em;
     color: #fff;
     text-transform: uppercase;
+    max-width: 220px;
+    white-space: normal;
+    word-break: break-word;
   }
 
   .nav-links {
@@ -132,6 +136,17 @@
     padding: 30px 40px 20px;
   }
 
+  .feature-header {
+    display: inline-block;
+    margin: 0 0 26px;
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--olive);
+    border-bottom: 1px solid var(--olive);
+    padding-bottom: 10px;
+  }
+
   .featured-artwork {
     display: grid;
     grid-template-columns: minmax(0, 1.1fr) minmax(280px, 0.9fr);
@@ -152,14 +167,16 @@
     justify-content: center;
     position: relative;
     margin-bottom: 16px;
-    font-family: 'Jost', sans-serif;
-    font-size: 0.65rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: rgba(0,0,0,0.35);
+    overflow: hidden;
+    background: #e8e1d2;
   }
 
-  .painting-img span { padding: 0 16px; text-align: center; }
+  .painting-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
 
   .p1 { background: linear-gradient(160deg, #b9c79a, #e8e6c9 60%, #f4efdc); }
   .p2 { background: linear-gradient(160deg, #cbb89a, #e9ddc5 55%, #f6efe0); }
@@ -321,6 +338,12 @@
   /* ---------- RESPONSIVE ---------- */
   @media (max-width: 900px) {
     nav { padding: 20px 24px; flex-wrap: wrap; row-gap: 14px; }
+    .logo {
+      flex: 1 1 180px;
+      max-width: 180px;
+      font-size: clamp(0.78rem, 3.8vw, 1.2rem);
+      line-height: 0.96;
+    }
     .nav-links { order: 3; flex-basis: 100%; justify-content: space-between; gap: 12px; }
     .nav-links a { font-size: 0.65rem; }
     .shop { padding: 24px; }
@@ -347,17 +370,19 @@
   <section class="hero" role="img" aria-label="Abstract artwork in warm earth tones"></section>
 
   <section class="quote-section">
-    <p>"For the past six years, I woke up questioning the reason for my existence in this world. There's got to be more to life than sitting in front of a computer for eight hours a day, I thought. Finally, I left a corporate career to pursue my passion for representational art. Art is an open ended question with no definitive answer, and that's exactly what keeps my curiosity alive. It's how I connect to the world and try to become a better person, one lesson at a time. It's a lifelong journey of patience, discipline, and discovery."</p>
+    <p>Soon after graduating with a business degree and getting a job in corporate America, I began to ask myself the greater questions. Roughly seven years ago, "There's got to be more to life than sitting in front of a computer for eight hours a day," I thought. I started to pick up a pencil and a pad. I had no idea what I was doing. I knew I was doing this for myself.</p>
+    <p>For me, art is an open-ended question with no definitive answer, and that's exactly what keeps my curiosity alive. It's how I connect to the world and try to become a better person, one sketch at a time. It's a lifelong journey of patience, discipline, and self-discovery.</p>
   </section>
 
   <section class="shop">
+    <h2 class="feature-header">Feature</h2>
     <div class="featured-artwork">
       <div class="painting-card">
-        <div class="painting-img p1"><span>painting photo</span></div>
-        <h3>TITLE</h3>
-        <div class="price">$TBD</div>
+        <div class="painting-img p1">
+          <img src="images/artworks/Icing On The Cake.jpeg" alt="Icing on the Cake" />
+        </div>
       </div>
-      <p class="artwork-description">Write a paragraph about this featured artwork here.</p>
+      <p class="artwork-description">Read what jake has to say about this piece...</p>
     </div>
   </section>
 
