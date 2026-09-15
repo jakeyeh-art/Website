@@ -54,10 +54,12 @@
   .subscribe-form button { padding: 12px 20px; border: none; background: #202020; color: #fff; font: 0.72rem 'Jost', sans-serif; letter-spacing: 0.12em; text-transform: uppercase; cursor: pointer; }
   .subscribe-form button:hover { background: #343434; }
   @media (max-width: 900px) {
-    nav { padding: 20px 24px; flex-wrap: wrap; row-gap: 14px; }
+    nav { position: relative; min-height: 95px; padding: 20px 24px; flex-wrap: wrap; row-gap: 14px; }
     .logo { flex: 1 1 180px; max-width: 180px; font-size: clamp(0.78rem, 3.8vw, 1.2rem); line-height: 0.96; }
-    .nav-links { order: 3; flex-basis: 100%; justify-content: space-between; gap: 10px; }
-    .nav-links a { font-size: 0.65rem; }
+    .nav-right { position: absolute; top: 20px; right: 24px; }
+    .nav-links { order: 3; flex-basis: 100%; min-width: 0; width: 100%; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 0; }
+    .nav-links li { min-width: 0; text-align: center; }
+    .nav-links a { font-size: clamp(0.48rem, 2.5vw, 0.65rem); letter-spacing: 0.08em; white-space: nowrap; }
     .patron-layout { display: block; padding: 64px 24px 90px; }
     .patron-sidebar { position: static; display: flex; flex-wrap: wrap; gap: 10px 18px; padding: 0; margin-bottom: 52px; }
   }

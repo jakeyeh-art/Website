@@ -287,15 +287,17 @@
     .artwork-grid { gap: 16px; padding-right: 16px; }
     .painting-card { flex-basis: min(82vw, 560px); }
     .gallery-hint { font-size: 0.58rem; letter-spacing: 0.14em; }
-    nav { flex-wrap: wrap; row-gap: 14px; }
+    nav { position: relative; width: 100%; min-height: 95px; padding: 20px 24px; flex-wrap: wrap; row-gap: 14px; }
     .logo {
       flex: 1 1 180px;
       max-width: 180px;
       font-size: clamp(0.78rem, 3.8vw, 1.2rem);
       line-height: 0.96;
     }
-    .nav-links { order: 3; flex-basis: 100%; justify-content: space-between; gap: 12px; }
-    .nav-links a { font-size: 0.65rem; }
+    .nav-right { position: absolute; top: 20px; right: 24px; }
+    .nav-links { order: 3; flex-basis: 100%; min-width: 0; width: 100%; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 0; }
+    .nav-links li { min-width: 0; text-align: center; }
+    .nav-links a { font-size: clamp(0.48rem, 2.5vw, 0.65rem); letter-spacing: 0.08em; white-space: nowrap; }
   }
 
   @media (max-width: 480px) {
