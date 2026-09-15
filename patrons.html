@@ -26,15 +26,15 @@
   .content { min-width: 0; }
   .eyebrow { color: var(--olive); font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 22px; }
   h1 { font-family: 'Jost', sans-serif; font-size: 2.75rem; font-weight: 500; line-height: 0.95; margin-bottom: 28px; }
-  .intro { max-width: 100%; font-size: 1.35rem; line-height: 1.55; margin-bottom: 76px; }
+  .intro { max-width: 100%; font-size: 1.35rem; line-height: 1.55; margin-bottom: 48px; }
   .patron-section { padding-top: 12px; margin-top: 56px; }
   h2 { font-size: 1.8rem; font-weight: 500; margin-bottom: 24px; }
   .steps { list-style: none; display: grid; gap: 22px; counter-reset: patron-step; }
   .steps li { counter-increment: patron-step; display: grid; grid-template-columns: 34px 1fr; gap: 14px; font-size: 1.08rem; line-height: 1.55; }
   .steps li::before { content: counter(patron-step, decimal-leading-zero); color: var(--olive); font-size: 0.72rem; letter-spacing: 0.12em; padding-top: 5px; }
   .patron-section p { font-size: 1.08rem; line-height: 1.55; }
-  .perk { margin-top: 32px; padding: 22px 24px; background: #1f1f1f; border: 1px solid rgba(255, 255, 255, 0.16); }
-  .perk h3 { font-size: 1.05rem; font-weight: 500; margin-bottom: 8px; }
+  .perk { margin-top: 32px; padding: 22px 24px; background: #211f19; border: 1px solid rgba(184, 153, 78, 0.62); }
+  .perk h3 { color: #c4a65c; font-size: 1.05rem; font-weight: 500; margin-bottom: 8px; }
   .fine-print { list-style: none; display: grid; gap: 16px; }
   .fine-print li { display: grid; grid-template-columns: 12px 1fr; gap: 12px; font-size: 0.9rem; line-height: 1.5; }
   .fine-print li::before { content: "–"; color: var(--olive); }
@@ -105,7 +105,14 @@
       </ol>
       <div class="perk">
         <h3>Founding Patron perk</h3>
-        <p>Anyone who donates more than $1000 total by the end of 2028 becomes a Founding Patron. You'll receive 50% off one painting, redeemable anytime after 2028, as a thank you for supporting Jake's artistic journey early on.</p>
+        <p>Anyone who donates more than $1000 total by the end of 2028 becomes a Founding Patron. You'll receive 50% off one painting**, redeemable anytime after 2028, as a thank you for supporting Jake's artistic journey early on.</p>
+      </div>
+      </section>
+
+      <section class="patron-section">
+      <div class="actions">
+        <a class="button submission-button" href="https://tally.so/r/KY9jY7" target="_blank" rel="noopener">Send an image</a>
+        <a class="button" href="https://venmo.com/u/jakeyeh" target="_blank" rel="noopener">Venmo @jakeyeh</a>
       </div>
       </section>
 
@@ -120,15 +127,9 @@
         <li>Patronage is never an obligation. These works are offered, not pushed. Purchase only if the piece genuinely resonates with you.</li>
       </ul>
       <p class="fine-print-note">*You will have the exclusive opportunity to take it home within 7 days before the sale opens to other patrons.</p>
+      <p class="fine-print-note">** This discount applies to independently sold work and may not apply to pieces represented by a gallery or subject to other exclusive representation agreements.</p>
       </section>
 
-      <section class="patron-section">
-      <h2>Send an image</h2>
-      <div class="actions">
-        <a class="button submission-button" href="https://tally.so/r/KY9jY7" target="_blank" rel="noopener">Open submission form</a>
-        <a class="button" href="https://venmo.com/u/jakeyeh" target="_blank" rel="noopener">Venmo @jakeyeh</a>
-      </div>
-      </section>
     </div>
   </main>
 
