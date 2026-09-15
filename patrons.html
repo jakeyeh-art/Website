@@ -8,51 +8,52 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-  :root { --cream: #faf8f4; --ink: #2b2822; --olive: #7d7758; --olive-dark: #4f4a37; --line: #c9c2ae; }
+  :root { --cream: #000; --ink: #fff; --olive: #c7c7c7; --olive-dark: #202020; --line: rgba(255, 255, 255, 0.3); }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body { font-family: 'Jost', sans-serif; color: var(--ink); background: var(--cream); -webkit-font-smoothing: antialiased; }
   a { color: inherit; text-decoration: none; }
   nav { display: flex; align-items: center; justify-content: space-between; padding: 28px 48px; border-bottom: 1px solid var(--line); }
   .logo { font-family: 'Bungee', sans-serif; font-size: 1.35rem; line-height: 0.94; letter-spacing: 0.04em; text-transform: uppercase; max-width: 220px; white-space: normal; word-break: break-word; }
-  .nav-links { display: flex; gap: 30px; list-style: none; }
-  .nav-links a { font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; padding-bottom: 4px; border-bottom: 1px solid transparent; }
+  .nav-links { display: flex; gap: 36px; list-style: none; }
+  .nav-links a { font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; padding-bottom: 4px; border-bottom: 1px solid transparent; }
   .nav-links a.active, .nav-links a:hover { border-bottom-color: var(--ink); }
   .nav-right { display: flex; align-items: center; }
   .nav-right svg { width: 17px; height: 17px; display: block; }
   .content { max-width: 930px; margin: 0 auto; padding: 88px 32px 120px; }
   .eyebrow { color: var(--olive); font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 22px; }
-  h1 { font-size: 2.75rem; font-weight: 500; line-height: 0.95; margin-bottom: 28px; }
+  h1 { font-family: 'Jost', sans-serif; font-size: 2.75rem; font-weight: 500; line-height: 0.95; margin-bottom: 28px; }
   .intro { max-width: 100%; font-size: 1.35rem; line-height: 1.55; margin-bottom: 76px; }
-  .patron-section { border-top: 1px solid var(--line); padding-top: 30px; margin-top: 56px; }
+  .patron-section { padding-top: 12px; margin-top: 56px; }
   h2 { font-size: 1.8rem; font-weight: 500; margin-bottom: 24px; }
   .steps { list-style: none; display: grid; gap: 22px; counter-reset: patron-step; }
   .steps li { counter-increment: patron-step; display: grid; grid-template-columns: 34px 1fr; gap: 14px; font-size: 1.08rem; line-height: 1.55; }
   .steps li::before { content: counter(patron-step, decimal-leading-zero); color: var(--olive); font-size: 0.72rem; letter-spacing: 0.12em; padding-top: 5px; }
-  .patron-section p, .fine-print li { font-size: 1.08rem; line-height: 1.55; }
-  .perk { margin-top: 32px; }
+  .patron-section p { font-size: 1.08rem; line-height: 1.55; }
+  .perk { margin-top: 32px; padding: 22px 24px; background: #1f1f1f; border: 1px solid rgba(255, 255, 255, 0.16); }
   .perk h3 { font-size: 1.05rem; font-weight: 500; margin-bottom: 8px; }
   .fine-print { list-style: none; display: grid; gap: 16px; }
-  .fine-print li { display: grid; grid-template-columns: 12px 1fr; gap: 12px; }
+  .fine-print li { display: grid; grid-template-columns: 12px 1fr; gap: 12px; font-size: 0.9rem; line-height: 1.5; }
   .fine-print li::before { content: "–"; color: var(--olive); }
-  .fine-print-note { margin-top: 20px; color: #6b6656; font-size: 0.78rem; line-height: 1.5; }
-  .actions { display: flex; flex-wrap: wrap; align-items: center; gap: 18px; margin-top: 42px; }
-  .button { display: inline-block; background: var(--olive); color: #fff; padding: 14px 22px; font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; }
-  .button:hover { background: var(--olive-dark); }
-  .image-placeholder { border: 1px dashed var(--line); padding: 28px; color: #6b6656; font-size: 0.8rem; line-height: 1.5; }
-  .image-placeholder strong { display: block; color: var(--ink); font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 8px; }
-  footer { background: var(--olive); color: #f4f1e8; padding: 44px 32px 24px; text-align: center; }
+  .fine-print-note { margin-top: 20px; color: rgba(255, 255, 255, 0.68); font-size: 0.78rem; line-height: 1.5; }
+  .actions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; margin-top: 42px; }
+  .button { display: block; background: #202020; border: 1px solid rgba(255, 255, 255, 0.16); color: #fff; padding: 22px 24px; font-size: 0.72rem; letter-spacing: 0.14em; text-align: center; text-transform: uppercase; }
+  .button.submission-button { background: #2a2a2a; }
+  .button:hover { background: #343434; }
+  @media (max-width: 600px) { .actions { grid-template-columns: 1fr; } }
+  footer { background: #000; color: #fff; padding: 44px 32px 24px; text-align: center; }
   .footer-bottom { max-width: 1160px; margin: 38px auto 0; padding: 22px 0 0 40px; border-top: 1px solid rgba(244,241,232,0.25); display: flex; justify-content: flex-end; align-items: center; flex-wrap: wrap; gap: 14px 24px; font-size: 0.7rem; letter-spacing: 0.05em; position: relative; }
   .footer-bottom .made-with { color: #cfcab8; margin-right: auto; }
   .made-with img { display: block; width: 88px; height: auto; }
   .footer-links { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; }
   .subscribe-form { display: flex; max-width: 420px; margin: 0 auto; gap: 10px; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); }
-  .subscribe-form input { flex: 1; min-width: 0; padding: 12px 14px; border: none; border-radius: 1px; font: 0.85rem 'Jost', sans-serif; }
-  .subscribe-form button { padding: 12px 20px; border: none; background: var(--olive-dark); color: #fff; font: 0.72rem 'Jost', sans-serif; letter-spacing: 0.12em; text-transform: uppercase; cursor: pointer; }
+  .subscribe-form input { flex: 1; min-width: 0; padding: 12px 14px; border: 1px solid rgba(255, 255, 255, 0.16); border-radius: 1px; background: #202020; color: #fff; font: 0.85rem 'Jost', sans-serif; }
+  .subscribe-form button { padding: 12px 20px; border: none; background: #202020; color: #fff; font: 0.72rem 'Jost', sans-serif; letter-spacing: 0.12em; text-transform: uppercase; cursor: pointer; }
+  .subscribe-form button:hover { background: #343434; }
   @media (max-width: 900px) {
     nav { padding: 20px 24px; flex-wrap: wrap; row-gap: 14px; }
     .logo { flex: 1 1 180px; max-width: 180px; font-size: clamp(0.78rem, 3.8vw, 1.2rem); line-height: 0.96; }
     .nav-links { order: 3; flex-basis: 100%; justify-content: space-between; gap: 10px; }
-    .nav-links a { font-size: 0.6rem; }
+    .nav-links a { font-size: 0.65rem; }
     .content { padding: 64px 24px 90px; }
   }
   @media (max-width: 600px) {
@@ -71,9 +72,9 @@
     <ul class="nav-links">
       <li><a href="index.html">HOME</a></li>
       <li><a href="artworks.html">ARTWORKS</a></li>
+      <li><a href="patrons.html" class="active">PATRONS</a></li>
       <li><a href="inquire.html">INQUIRE</a></li>
       <li><a href="about.html">ABOUT</a></li>
-      <li><a href="patrons.html" class="active">PATRONS</a></li>
     </ul>
     <div class="nav-right">
       <a href="https://instagram.com/jakeyeh_art" aria-label="Visit Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="0.6" fill="currentColor" stroke="none"/></svg></a>
@@ -81,9 +82,8 @@
   </nav>
 
   <main class="content">
-    <div class="eyebrow">Support the work</div>
     <h1>Be My Patrons</h1>
-    <p class="intro">Jake's dream of becoming a full-time artist has come true. Now, if you'd like, here's your chance to be part of it.</p>
+    <p class="intro">Every contribution helps build toward what's next, covering studio costs, materials, and the education that will define Jake's next chapter as an artist.</p>
 
     <section class="patron-section">
       <h2>How it works</h2>
@@ -108,15 +108,14 @@
         <li>For donations exceeding $100, Jake covers domestic (US) shipping.</li>
         <li>Patronage is never an obligation. These works are offered, not pushed. Purchase only if the piece genuinely resonates with you.</li>
       </ul>
-      <p class="fine-print-note">*You will have the exclusive opportunity to purchase within 7 days before the sale opens to other patrons.</p>
+      <p class="fine-print-note">*You will have the exclusive opportunity to take it home within 7 days before the sale opens to other patrons.</p>
     </section>
 
     <section class="patron-section">
       <h2>Send an image</h2>
-      <div class="image-placeholder"><strong>Image submission coming soon</strong>A hosted upload form will go here. Until then, send Jake an image through Instagram or use the inquiry page below.</div>
       <div class="actions">
+        <a class="button submission-button" href="https://tally.so/r/KY9jY7" target="_blank" rel="noopener">Open submission form</a>
         <a class="button" href="https://venmo.com/u/jakeyeh" target="_blank" rel="noopener">Venmo @jakeyeh</a>
-        <a class="button" href="inquire.html">Send Jake Your Image</a>
       </div>
     </section>
   </main>

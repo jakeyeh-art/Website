@@ -9,11 +9,11 @@
 <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --cream: #faf8f4;
-    --ink: #2b2822;
-    --olive: #7d7758;
-    --olive-dark: #4f4a37;
-    --line: #c9c2ae;
+    --cream: #000;
+    --ink: #fff;
+    --olive: #c7c7c7;
+    --olive-dark: #202020;
+    --line: rgba(255, 255, 255, 0.3);
     --sold: #b6512f;
   }
 
@@ -92,7 +92,7 @@
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    color: rgba(43, 40, 34, 0.72);
+    color: rgba(255, 255, 255, 0.72);
     font-size: 0.62rem;
     letter-spacing: 0.18em;
     text-transform: uppercase;
@@ -103,7 +103,7 @@
     content: "";
     width: 24px;
     height: 1px;
-    background: rgba(43, 40, 34, 0.35);
+    background: rgba(255, 255, 255, 0.35);
     position: relative;
   }
 
@@ -111,8 +111,8 @@
     content: "";
     width: 7px;
     height: 7px;
-    border-top: 1px solid rgba(43, 40, 34, 0.45);
-    border-right: 1px solid rgba(43, 40, 34, 0.45);
+    border-top: 1px solid rgba(255, 255, 255, 0.45);
+    border-right: 1px solid rgba(255, 255, 255, 0.45);
     transform: rotate(45deg);
     display: block;
     animation: drift 1.8s ease-in-out infinite alternate;
@@ -130,8 +130,24 @@
     padding: 12px 12px 26px 0;
     scroll-snap-type: x proximity;
     scrollbar-width: thin;
-    scrollbar-color: rgba(125, 119, 88, 0.6) transparent;
+    scrollbar-color: rgba(255, 255, 255, 0.6) transparent;
     -webkit-overflow-scrolling: touch;
+  }
+
+  .artwork-grid.peek-once {
+    animation: galleryPeek 1.15s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  @keyframes galleryPeek {
+    0% { transform: translateX(0); }
+    24% { transform: translateX(-24px); }
+    48% { transform: translateX(7px); }
+    72% { transform: translateX(-3px); }
+    100% { transform: translateX(0); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .artwork-grid.peek-once { animation: none; }
   }
 
   .painting-card {
@@ -147,7 +163,7 @@
     position: absolute;
     inset: 0 0 0 auto;
     width: 18%;
-    background: linear-gradient(to left, rgba(250, 248, 244, 0.7), rgba(250, 248, 244, 0));
+    background: linear-gradient(to left, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0));
     pointer-events: none;
     opacity: 0.9;
   }
@@ -171,7 +187,7 @@
     font-size: 0.62rem;
     letter-spacing: 0.06em;
     text-transform: uppercase;
-    color: rgba(0,0,0,0.35);
+    color: rgba(255,255,255,0.55);
     box-shadow: 0 18px 28px rgba(43, 40, 34, 0.06);
   }
 
@@ -216,14 +232,14 @@
 
   .painting-card .price {
     font-size: 0.8rem;
-    color: #6b6656;
+    color: rgba(255, 255, 255, 0.68);
   }
 
   .gallery-message {
     width: 100%;
     padding: 70px 24px;
     border: 1px solid var(--line);
-    color: #6b6656;
+    color: rgba(255, 255, 255, 0.68);
     text-align: center;
     font-size: 0.8rem;
     letter-spacing: 0.08em;
@@ -244,13 +260,13 @@
   }
 
   .sketchbook-link:hover { background: var(--olive); }
-  footer { background: var(--olive); color: #f4f1e8; padding: 44px 32px 24px; text-align: center; }
+  footer { background: #000; color: #fff; padding: 44px 32px 24px; text-align: center; }
   footer h2 { font-size: 2rem; font-weight: 500; letter-spacing: 0.04em; margin-bottom: 10px; }
-  footer p.sub { color: #e5e1d2; font-size: 0.85rem; margin-bottom: 26px; }
+  footer p.sub { color: rgba(255, 255, 255, 0.72); font-size: 0.85rem; margin-bottom: 26px; }
   .subscribe-form { display: flex; max-width: 420px; margin: 0 auto; gap: 10px; }
-  .subscribe-form input { flex: 1; min-width: 0; padding: 12px 14px; border: none; border-radius: 1px; font: 0.85rem 'Jost', sans-serif; }
-  .subscribe-form button { padding: 12px 20px; border: none; background: var(--olive-dark); color: #fff; font: 0.72rem 'Jost', sans-serif; letter-spacing: 0.12em; text-transform: uppercase; cursor: pointer; }
-  .subscribe-form button:hover { background: #3c3829; }
+  .subscribe-form input { flex: 1; min-width: 0; padding: 12px 14px; border: 1px solid rgba(255, 255, 255, 0.16); border-radius: 1px; background: #202020; color: #fff; font: 0.85rem 'Jost', sans-serif; }
+  .subscribe-form button { padding: 12px 20px; border: none; background: #202020; color: #fff; font: 0.72rem 'Jost', sans-serif; letter-spacing: 0.12em; text-transform: uppercase; cursor: pointer; }
+  .subscribe-form button:hover { background: #343434; }
   .footer-bottom { max-width: 1160px; margin: 38px auto 0; padding: 22px 0 0 40px; border-top: 1px solid rgba(244,241,232,0.25); display: flex; justify-content: flex-end; align-items: center; flex-wrap: wrap; gap: 14px 24px; font-size: 0.7rem; letter-spacing: 0.05em; position: relative; }
   .footer-bottom .made-with { color: #cfcab8; margin-right: auto; }
   .made-with img { display: block; width: 88px; height: auto; }
@@ -295,9 +311,9 @@
     <ul class="nav-links">
       <li><a href="index.html">HOME</a></li>
       <li><a href="artworks.html" class="active">ARTWORKS</a></li>
+      <li><a href="patrons.html">PATRONS</a></li>
       <li><a href="inquire.html">INQUIRE</a></li>
       <li><a href="about.html">ABOUT</a></li>
-      <li><a href="patrons.html">PATRONS</a></li>
     </ul>
     <div class="nav-right">
       <a href="https://instagram.com/jakeyeh_art" aria-label="Visit Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="0.6" fill="currentColor" stroke="none"/></svg></a>
@@ -384,6 +400,10 @@
             </a>
           </div>
         `).join('');
+        if (artworks.length > 1 && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+          artworkGrid.classList.add('peek-once');
+          artworkGrid.addEventListener('animationend', () => artworkGrid.classList.remove('peek-once'), { once: true });
+        }
       })
       .catch(() => showMessage('Artworks are temporarily unavailable'));
   </script>

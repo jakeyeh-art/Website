@@ -8,9 +8,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-  :root { --cream: #f7f1e8; --ink: #f5efe6; --olive: #9a9076; --olive-dark: #2d2722; --paper: #171310; --panel: #221d1a; --panel-soft: #2d2825; --line: transparent; }
+  :root { --cream: #000; --ink: #fff; --olive: #c7c7c7; --olive-dark: #202020; --paper: #000; --panel: #202020; --panel-soft: #2a2a2a; --line: rgba(255, 255, 255, 0.2); }
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { font-family: 'Jost', sans-serif; color: var(--ink); background: radial-gradient(circle at top, #3a322d 0%, #201c19 34%, #12100f 100%); overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+  body { font-family: 'Jost', sans-serif; color: var(--ink); background: #000; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
   a { color: inherit; text-decoration: none; }
   nav { display: flex; align-items: center; justify-content: space-between; padding: 28px 48px; border-bottom: 1px solid rgba(245, 239, 230, 0.08); }
   .logo { font-family: 'Bungee', sans-serif; font-size: 1.35rem; line-height: 0.94; letter-spacing: 0.04em; text-transform: uppercase; max-width: 220px; white-space: normal; word-break: break-word; }
@@ -18,34 +18,38 @@
   .nav-links a { font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; padding-bottom: 4px; border-bottom: 1px solid transparent; }
   .nav-links a.active, .nav-links a:hover { border-bottom-color: rgba(245, 239, 230, 0.7); }
   .nav-right svg { width: 17px; height: 17px; display: block; }
-  .content { max-width: 900px; margin: 0 auto; padding: 64px 32px 90px; text-align: center; }
-  .eyebrow { color: var(--olive); font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 18px; }
-  h1 { font-family: 'Jost', sans-serif; font-size: 3.5rem; font-weight: 500; margin-bottom: 34px; }
-  .viewer { display: grid; gap: 22px; }
-  .sketchbook-image { width: 100%; min-height: 320px; max-height: calc(100vh - 220px); display: flex; align-items: center; justify-content: center; padding: 20px; background: var(--panel); border: none; box-shadow: none; overflow: hidden; }
-  .sketchbook-image span { padding: 12px 16px; background: rgba(247, 241, 232, 0.08); color: var(--cream); font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; }
-  .sketchbook-image img { display: none; max-width: 100%; max-height: calc(100vh - 220px); width: auto; height: auto; object-fit: contain; object-position: center; }
-  .controls { display: flex; justify-content: space-between; gap: 16px; }
-  .controls button { min-width: 120px; border: none; background: rgba(255, 255, 255, 0.04); color: var(--ink); cursor: pointer; padding: 11px 16px; font: 0.72rem 'Jost', sans-serif; letter-spacing: 0.12em; text-transform: uppercase; }
-  .controls button:hover:not(:disabled) { background: rgba(255, 255, 255, 0.12); }
-  .controls button:disabled { opacity: 0.35; cursor: default; }
-  .counter { color: rgba(245, 239, 230, 0.74); font-size: 0.75rem; align-self: center; }
-  .artworks-link { position: fixed; right: 24px; bottom: 24px; z-index: 5; padding: 10px 14px; background: var(--olive-dark); color: #fff; font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; }
-  .artworks-link:hover { background: var(--olive); }
-  footer { background: var(--olive); color: #f4f1e8; padding: 44px 32px 24px; text-align: center; }
+  .page { max-width: 1240px; margin: 0 auto; padding: 46px 40px 100px; }
+  .gallery-toolbar { display: flex; justify-content: flex-end; margin-bottom: 10px; }
+  .gallery-hint { display: inline-flex; align-items: center; gap: 10px; color: rgba(255, 255, 255, 0.72); font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase; }
+  .gallery-hint::before { content: ""; width: 24px; height: 1px; background: rgba(255, 255, 255, 0.35); }
+  .gallery-hint::after { content: ""; width: 7px; height: 7px; border-top: 1px solid rgba(255, 255, 255, 0.45); border-right: 1px solid rgba(255, 255, 255, 0.45); transform: rotate(45deg); animation: drift 1.8s ease-in-out infinite alternate; }
+  @keyframes drift { 0% { transform: translateX(-2px) rotate(45deg); opacity: 0.45; } 100% { transform: translateX(4px) rotate(45deg); opacity: 1; } }
+  .artwork-grid { display: flex; gap: 20px; overflow-x: auto; padding: 12px 12px 26px 0; scroll-snap-type: x proximity; scrollbar-width: thin; scrollbar-color: rgba(255, 255, 255, 0.6) transparent; -webkit-overflow-scrolling: touch; }
+  .artwork-grid.peek-once { animation: galleryPeek 1.15s cubic-bezier(0.22, 1, 0.36, 1) both; }
+  @keyframes galleryPeek { 0% { transform: translateX(0); } 24% { transform: translateX(-24px); } 48% { transform: translateX(7px); } 72% { transform: translateX(-3px); } 100% { transform: translateX(0); } }
+  @media (prefers-reduced-motion: reduce) { .artwork-grid.peek-once { animation: none; } }
+  .painting-card { flex: 0 0 min(72vw, 980px); scroll-snap-align: start; text-align: left; position: relative; padding-right: 14px; }
+  .painting-img { height: clamp(420px, 62vh, 720px); width: 100%; border-radius: 2px; display: flex; align-items: center; justify-content: center; position: relative; margin-bottom: 14px; background: var(--panel); box-shadow: 0 18px 28px rgba(0, 0, 0, 0.24); overflow: hidden; }
+  .painting-img img { width: 100%; height: 100%; object-fit: contain; display: block; }
+  .painting-card h3 { font-weight: 500; font-size: 1rem; letter-spacing: 0.02em; margin-bottom: 4px; }
+  .gallery-message { width: 100%; padding: 70px 24px; border: 1px solid var(--line); color: rgba(255, 255, 255, 0.68); text-align: center; font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; }
+  .artworks-link { position: fixed; right: 24px; bottom: 24px; z-index: 5; padding: 10px 14px; background: #202020; color: #fff; font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; }
+  .artworks-link:hover { background: #343434; }
+  footer { background: #000; color: #fff; padding: 44px 32px 24px; text-align: center; }
   footer h2 { font-size: 2rem; font-weight: 500; letter-spacing: 0.04em; margin-bottom: 10px; }
-  footer p.sub { color: #e5e1d2; font-size: 0.85rem; margin-bottom: 26px; }
+  footer p.sub { color: rgba(255, 255, 255, 0.72); font-size: 0.85rem; margin-bottom: 26px; }
   .subscribe-form { display: flex; max-width: 420px; margin: 0 auto; gap: 10px; }
-  .subscribe-form input { flex: 1; min-width: 0; padding: 12px 14px; border: none; border-radius: 1px; font: 0.85rem 'Jost', sans-serif; }
-  .subscribe-form button { padding: 12px 20px; border: none; background: var(--olive-dark); color: #fff; font: 0.72rem 'Jost', sans-serif; letter-spacing: 0.12em; text-transform: uppercase; cursor: pointer; }
-  .subscribe-form button:hover { background: #3c3829; }
+  .subscribe-form input { flex: 1; min-width: 0; padding: 12px 14px; border: 1px solid rgba(255, 255, 255, 0.16); border-radius: 1px; background: #202020; color: #fff; font: 0.85rem 'Jost', sans-serif; }
+  .subscribe-form button { padding: 12px 20px; border: none; background: #202020; color: #fff; font: 0.72rem 'Jost', sans-serif; letter-spacing: 0.12em; text-transform: uppercase; cursor: pointer; }
+  .subscribe-form button:hover { background: #343434; }
   .footer-bottom { max-width: 1160px; margin: 38px auto 0; padding: 22px 0 0 40px; border-top: 1px solid rgba(244,241,232,0.25); display: flex; justify-content: flex-end; align-items: center; flex-wrap: wrap; gap: 14px 24px; font-size: 0.7rem; letter-spacing: 0.05em; position: relative; }
   .footer-bottom .made-with { color: #cfcab8; margin-right: auto; }
   .made-with img { display: block; width: 88px; height: auto; }
   .footer-links { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; }
   .footer-bottom .subscribe-form { position: absolute; top: 50%; left: 50%; margin: 0; transform: translate(-50%, -50%); }
   @media (max-width: 600px) { .footer-bottom { padding: 18px 0 0; display: grid; grid-template-columns: auto 1fr; gap: 16px 12px; } .footer-bottom .subscribe-form { position: static; grid-column: 1 / -1; grid-row: 1; width: 100%; transform: none; } .footer-bottom .made-with { grid-column: 1; grid-row: 2; margin-right: 0; align-self: center; } .made-with img { width: 48px; } .footer-links { grid-column: 2; grid-row: 2; gap: 8px 12px; justify-content: flex-end; align-items: center; } }
-  @media (max-width: 768px) { nav { flex-wrap: wrap; row-gap: 14px; } .logo { flex: 1 1 180px; max-width: 180px; font-size: clamp(0.78rem, 3.8vw, 1.2rem); line-height: 0.96; } .content { max-width: none; padding: 48px 20px 70px; } .viewer { width: 100%; justify-items: stretch; } .gallery-grid { width: 100%; height: auto; min-height: 0; overflow: visible; padding-right: 0; } .gallery-grid.mobile-view { display: block; } .gallery-item { position: relative; left: auto; top: auto !important; width: 100%; max-width: none; height: min(72vh, 620px); aspect-ratio: auto; margin-bottom: 18px; } .gallery-item img { object-fit: contain; } .gallery-item:hover img, .gallery-item:focus-visible img { transform: none; } .gallery-controls { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-top: 10px; } .gallery-controls button { min-width: 120px; background: transparent; border: none; color: var(--ink); cursor: pointer; padding: 0; font: 0.72rem 'Jost', sans-serif; letter-spacing: 0.12em; text-transform: uppercase; } .gallery-controls button:hover:not(:disabled) { background: transparent; } .gallery-controls button:disabled { opacity: 0.35; cursor: default; } .gallery-controls .counter { color: rgba(245, 239, 230, 0.74); font-size: 0.75rem; } }
+  @media (max-width: 800px) { nav { flex-wrap: wrap; row-gap: 14px; } .logo { flex: 1 1 180px; max-width: 180px; font-size: clamp(0.78rem, 3.8vw, 1.2rem); line-height: 0.96; } .page { padding: 30px 24px 70px; } .artwork-grid { gap: 16px; padding-right: 16px; } .painting-card { flex-basis: min(82vw, 560px); } .gallery-hint { font-size: 0.58rem; letter-spacing: 0.14em; } }
+  @media (max-width: 480px) { .painting-card { flex-basis: 82vw; } .painting-img { height: min(62vh, 480px); } }
 </style>
 </head>
 <body>
@@ -54,26 +58,21 @@
     <ul class="nav-links">
       <li><a href="index.html">HOME</a></li>
       <li><a href="artworks.html">ARTWORKS</a></li>
+      <li><a href="patrons.html">PATRONS</a></li>
       <li><a href="inquire.html">INQUIRE</a></li>
       <li><a href="about.html">ABOUT</a></li>
-      <li><a href="patrons.html">PATRONS</a></li>
     </ul>
     <div class="nav-right">
       <a href="https://instagram.com/jakeyeh_art" aria-label="Visit Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="0.6" fill="currentColor" stroke="none"/></svg></a>
     </div>
   </nav>
 
-  <main class="content">
-    <div class="viewer">
-      <div class="sketchbook-image">
-        <img id="sketchbook-photo" alt="Sketchbook page">
-        <span id="photo-placeholder">Loading sketchbook photos...</span>
-      </div>
-      <div class="controls">
-        <button id="previous" type="button">Previous</button>
-        <span class="counter" id="counter">1 / 1</span>
-        <button id="next" type="button">Next</button>
-      </div>
+  <main class="page">
+    <div class="gallery-toolbar" aria-label="Sketchbook gallery navigation">
+      <div class="gallery-hint">More pages</div>
+    </div>
+    <div class="artwork-grid" id="sketchbook-grid">
+      <p class="gallery-message">Loading sketchbook photos...</p>
     </div>
   </main>
 
@@ -96,49 +95,20 @@
   </footer>
 
   <script>
-    const contentsUrl = 'https://api.github.com/repos/jakeyeh-art/Website/contents/images/sketches?ref=main';
+    const sketchbookGrid = document.getElementById('sketchbook-grid');
     const imageExtensions = /\.(avif|gif|jpe?g|png|webp)$/i;
-    let photos = [];
-    let currentPhoto = 0;
-    const image = document.getElementById('sketchbook-photo');
-    const placeholder = document.getElementById('photo-placeholder');
-    const counter = document.getElementById('counter');
-    const previous = document.getElementById('previous');
-    const next = document.getElementById('next');
+    const contentsUrl = 'https://api.github.com/repos/jakeyeh-art/Website/contents/images/sketches?ref=main';
 
-    function showPhoto() {
-      if (!photos.length) {
-        image.style.display = 'none';
-        placeholder.textContent = 'Add sketchbook photos to images/sketches';
-        placeholder.style.display = 'block';
-        counter.textContent = '0 / 0';
-        previous.disabled = true;
-        next.disabled = true;
-        return;
-      }
-
-      image.src = photos[currentPhoto];
-      image.alt = `Sketchbook page ${currentPhoto + 1}`;
-      image.onload = () => { image.style.display = 'block'; placeholder.style.display = 'none'; };
-      image.onerror = () => { image.style.display = 'none'; placeholder.style.display = 'block'; };
-      counter.textContent = `${currentPhoto + 1} / ${photos.length}`;
-      previous.disabled = currentPhoto === 0;
-      next.disabled = currentPhoto === photos.length - 1;
+    function titleFromFilename(filename) {
+      return filename
+        .replace(/\.[^.]+$/, '')
+        .replace(/[-_]+/g, ' ')
+        .replace(/\b\w/g, character => character.toUpperCase());
     }
 
-    previous.addEventListener('click', () => {
-      if (currentPhoto > 0) {
-        currentPhoto -= 1;
-        showPhoto();
-      }
-    });
-
-    next.addEventListener('click', () => {
-      if (currentPhoto < photos.length - 1) {
-        currentPhoto += 1;
-        showPhoto();
-      }
-    });
+    function showMessage(message) {
+      sketchbookGrid.innerHTML = `<p class="gallery-message">${message}</p>`;
+    }
 
     fetch(contentsUrl)
       .then(response => {
@@ -146,18 +116,27 @@
         return response.json();
       })
       .then(files => {
-        photos = files.filter(file => file.type === 'file' && imageExtensions.test(file.name))
-          .sort((a, b) => a.name.localeCompare(b.name))
-          .map(file => file.download_url);
-        showPhoto();
+        const sketches = files
+          .filter(file => file.type === 'file' && imageExtensions.test(file.name))
+          .sort((a, b) => a.name.localeCompare(b.name));
+        if (!sketches.length) {
+          showMessage('Add sketchbook photos to images/sketches');
+          return;
+        }
+        sketchbookGrid.innerHTML = sketches.map(file => `
+          <div class="painting-card">
+            <div class="painting-img">
+              <img src="${file.download_url}" alt="${titleFromFilename(file.name)}" loading="lazy">
+            </div>
+            <h3>${titleFromFilename(file.name)}</h3>
+          </div>
+        `).join('');
+        if (sketches.length > 1 && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+          sketchbookGrid.classList.add('peek-once');
+          sketchbookGrid.addEventListener('animationend', () => sketchbookGrid.classList.remove('peek-once'), { once: true });
+        }
       })
-      .catch(() => {
-        placeholder.textContent = 'Sketchbook photos are temporarily unavailable';
-        placeholder.style.display = 'block';
-        counter.textContent = '0 / 0';
-        previous.disabled = true;
-        next.disabled = true;
-      });
+      .catch(() => showMessage('Sketchbook photos are temporarily unavailable'));
   </script>
 </body>
 </html>
