@@ -212,6 +212,45 @@
     line-height: 1.55;
   }
 
+  .profile-section {
+    max-width: 1160px;
+    margin: 40px auto 100px;
+    padding: 30px 40px 20px;
+  }
+
+  .profile-link {
+    display: block;
+    position: relative;
+    max-width: 380px;
+    margin: 0 auto;
+    overflow: hidden;
+    background: #202020;
+  }
+
+  .profile-image {
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    transition: transform 220ms ease;
+  }
+
+  .profile-label {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 10px 14px;
+    background: rgba(0, 0, 0, 0.78);
+    color: #fff;
+    font-size: 0.72rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  .profile-link:hover .profile-image,
+  .profile-link:focus-visible .profile-image { transform: scale(1.025); }
+
   .more-link {
     display: block;
     text-align: center;
@@ -376,16 +415,11 @@
     <p>For me, art is an open-ended question with no definitive answer, and that's exactly what keeps my curiosity alive. It's how I connect to the world and try to become a better person, one sketch at a time. It's a lifelong journey of patience, discipline, and self-discovery.</p>
   </section>
 
-  <section class="shop">
-    <h2 class="feature-header">Feature</h2>
-    <div class="featured-artwork">
-      <div class="painting-card">
-        <div class="painting-img p1">
-          <img src="images/artworks/Icing On The Cake.jpeg" alt="Icing on the Cake" />
-        </div>
-      </div>
-      <p class="artwork-description">Read what jake has to say about this piece...</p>
-    </div>
+  <section class="profile-section">
+    <a class="profile-link" href="about.html" aria-label="Get to know Jake Yeh">
+      <img class="profile-image" src="images/Headshot.png" alt="Jake Yeh">
+      <span class="profile-label">Get to know me</span>
+    </a>
   </section>
 
 

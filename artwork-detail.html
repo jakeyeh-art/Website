@@ -93,6 +93,7 @@
     };
 
     const id = new URLSearchParams(window.location.search).get('id');
+    const folder = new URLSearchParams(window.location.search).get('folder') || 'artworks';
     const imageName = new URLSearchParams(window.location.search).get('image');
     const uploadedTitle = new URLSearchParams(window.location.search).get('title');
     const artwork = artworks[id] || artworks['woman-on-the-rock'];
@@ -132,7 +133,7 @@
     if (imageName) {
       const imageUrl = imageName.startsWith('http')
         ? imageName
-        : `https://raw.githubusercontent.com/jakeyeh-art/Website/main/images/artworks/${encodeURIComponent(imageName)}`;
+        : `https://raw.githubusercontent.com/jakeyeh-art/Website/main/images/${encodeURIComponent(folder)}/${encodeURIComponent(imageName)}`;
       document.getElementById('detail-image').innerHTML = `<img src="${imageUrl}" alt="${artwork.title}">`;
     }
     document.getElementById('inquire-link').href = `inquire.html?artwork=${encodeURIComponent(artwork.title)}`;

@@ -19,7 +19,11 @@
   .nav-links a.active, .nav-links a:hover { border-bottom-color: var(--ink); }
   .nav-right { display: flex; align-items: center; }
   .nav-right svg { width: 17px; height: 17px; display: block; }
-  .content { max-width: 930px; margin: 0 auto; padding: 88px 32px 120px; }
+  .patron-layout { max-width: 1240px; margin: 0 auto; padding: 88px 32px 120px; display: grid; grid-template-columns: 180px minmax(0, 930px); gap: 64px; align-items: start; }
+  .patron-sidebar { position: sticky; top: 32px; display: grid; gap: 14px; padding-top: 8px; }
+  .patron-sidebar a { color: rgba(255, 255, 255, 0.68); font-size: 0.7rem; letter-spacing: 0.12em; line-height: 1.4; text-transform: uppercase; }
+  .patron-sidebar a:hover, .patron-sidebar a.active { color: #fff; }
+  .content { min-width: 0; }
   .eyebrow { color: var(--olive); font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 22px; }
   h1 { font-family: 'Jost', sans-serif; font-size: 2.75rem; font-weight: 500; line-height: 0.95; margin-bottom: 28px; }
   .intro { max-width: 100%; font-size: 1.35rem; line-height: 1.55; margin-bottom: 76px; }
@@ -54,7 +58,8 @@
     .logo { flex: 1 1 180px; max-width: 180px; font-size: clamp(0.78rem, 3.8vw, 1.2rem); line-height: 0.96; }
     .nav-links { order: 3; flex-basis: 100%; justify-content: space-between; gap: 10px; }
     .nav-links a { font-size: 0.65rem; }
-    .content { padding: 64px 24px 90px; }
+    .patron-layout { display: block; padding: 64px 24px 90px; }
+    .patron-sidebar { position: static; display: flex; flex-wrap: wrap; gap: 10px 18px; padding: 0; margin-bottom: 52px; }
   }
   @media (max-width: 600px) {
     .footer-bottom { padding: 18px 0 0; display: grid; grid-template-columns: auto 1fr; gap: 16px 12px; }
@@ -81,11 +86,16 @@
     </div>
   </nav>
 
-  <main class="content">
-    <h1>Be My Patrons</h1>
+  <main class="patron-layout">
+    <aside class="patron-sidebar" aria-label="Patron pages">
+      <a class="active" href="patrons.html">Patronage Instruction</a>
+      <a href="patron-works.html">Completed Patron Works</a>
+    </aside>
+    <div class="content">
+      <h1>Be My Patrons</h1>
     <p class="intro">Every contribution helps build toward what's next, covering studio costs, materials, and the education that will define Jake's next chapter as an artist.</p>
 
-    <section class="patron-section">
+      <section class="patron-section">
       <h2>How it works</h2>
       <ol class="steps">
         <li>Send Jake up to 5 images you'd like to see painted.</li>
@@ -97,11 +107,12 @@
         <h3>Founding Patron perk</h3>
         <p>Anyone who donates more than $1000 total by the end of 2028 becomes a Founding Patron. You'll receive 50% off one painting, redeemable anytime after 2028, as a thank you for supporting Jake's artistic journey early on.</p>
       </div>
-    </section>
+      </section>
 
-    <section class="patron-section">
+      <section class="patron-section">
       <h2>The fine print</h2>
       <ul class="fine-print">
+        <li>Suggested subjects include portraiture, figurative work, and landscapes. Please submit the highest quality images you can, ideally with clear, well-defined light and shadow.</li>
         <li>Paid patrons receive priority consideration when selecting which images to paint.</li>
         <li>The artist retains full creative control over the final work.</li>
         <li>All pieces will not exceed 10 inches in either length or width.</li>
@@ -109,15 +120,16 @@
         <li>Patronage is never an obligation. These works are offered, not pushed. Purchase only if the piece genuinely resonates with you.</li>
       </ul>
       <p class="fine-print-note">*You will have the exclusive opportunity to take it home within 7 days before the sale opens to other patrons.</p>
-    </section>
+      </section>
 
-    <section class="patron-section">
+      <section class="patron-section">
       <h2>Send an image</h2>
       <div class="actions">
         <a class="button submission-button" href="https://tally.so/r/KY9jY7" target="_blank" rel="noopener">Open submission form</a>
         <a class="button" href="https://venmo.com/u/jakeyeh" target="_blank" rel="noopener">Venmo @jakeyeh</a>
       </div>
-    </section>
+      </section>
+    </div>
   </main>
 
   <footer>
