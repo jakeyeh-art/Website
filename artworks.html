@@ -124,71 +124,33 @@
   }
 
   .artwork-grid {
-    display: flex;
-    gap: 20px;
-    overflow-x: auto;
-    padding: 12px 12px 26px 0;
-    scroll-snap-type: x proximity;
-    scrollbar-width: thin;
-    scrollbar-color: rgba(255, 255, 255, 0.6) transparent;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  .artwork-grid.peek-once {
-    animation: galleryPeek 1.15s cubic-bezier(0.22, 1, 0.36, 1) both;
-  }
-
-  @keyframes galleryPeek {
-    0% { transform: translateX(0); }
-    24% { transform: translateX(-24px); }
-    48% { transform: translateX(7px); }
-    72% { transform: translateX(-3px); }
-    100% { transform: translateX(0); }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .artwork-grid.peek-once { animation: none; }
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
   }
 
   .painting-card {
-    flex: 0 0 min(72vw, 980px);
-    scroll-snap-align: start;
-    text-align: left;
-    position: relative;
-    padding-right: 14px;
+    min-width: 0;
   }
 
-  .painting-card::after {
-    content: "";
-    position: absolute;
-    inset: 0 0 0 auto;
-    width: 18%;
-    background: linear-gradient(to left, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0));
-    pointer-events: none;
-    opacity: 0.9;
-  }
-
-  .artwork-link { display: block; }
-  .artwork-link:hover .painting-img {
-    outline: 2px solid transparent;
-    outline-offset: 0;
+  .painting-button {
+    display: block;
+    width: 100%;
+    padding: 0;
+    border: 0;
     background: transparent;
+    color: inherit;
+    cursor: zoom-in;
   }
 
   .painting-img {
-    height: clamp(420px, 62vh, 720px);
+    aspect-ratio: 1 / 1;
     width: 100%;
-    border-radius: 2px;
     display: flex;
     align-items: center;
     justify-content: center;
-    position: relative;
-    margin-bottom: 14px;
-    font-size: 0.62rem;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.55);
-    box-shadow: 0 18px 28px rgba(43, 40, 34, 0.06);
+    background: transparent;
+    overflow: hidden;
   }
 
   .painting-img img {
@@ -196,43 +158,71 @@
     height: 100%;
     object-fit: contain;
     display: block;
+    transition: transform 220ms ease;
   }
 
-  .painting-img span { padding: 0 16px; text-align: center; }
+  .painting-button:hover img, .painting-button:focus-visible img { transform: scale(1.04); }
 
-  .g1 { background: linear-gradient(160deg, #b9c79a, #e8e6c9 60%, #f4efdc); }
-  .g2 { background: linear-gradient(150deg, #8fa5b8, #d8e0d8 55%, #f0ede0); }
-  .g3 { background: linear-gradient(160deg, #d8c27a, #e9d9a3 60%, #f5ecd0); }
-  .g4 { background: linear-gradient(150deg, #c9b48a, #e6d7b8 55%, #f6efe0); }
-  .g5 { background: linear-gradient(160deg, #d1b45f, #ecd99a 60%, #f7edcf); }
-  .g6 { background: linear-gradient(150deg, #b79a6a, #dcc79c 55%, #f4ecdb); }
-  .g7 { background: linear-gradient(160deg, #a9b98d, #d9ddc0 60%, #f2f0e4); }
-  .g8 { background: linear-gradient(150deg, #6b6450, #97907a 55%, #d6d1bf); }
-
-  .sold-tag {
+  .lightbox[hidden] { display: none; }
+  .lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 20;
+    display: grid;
+    place-items: center;
+    padding: 48px;
+    background: rgba(0, 0, 0, 0.94);
+  }
+  .lightbox-content {
+    width: min(1180px, 100%);
+    max-height: calc(100dvh - 96px);
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 190px;
+    align-items: center;
+    gap: 32px;
+  }
+  .lightbox-image {
+    max-width: 100%;
+    max-height: calc(100dvh - 110px);
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    display: block;
+    justify-self: center;
+  }
+  .lightbox-info { color: rgba(255, 255, 255, 0.72); }
+  .lightbox-info h2 { font-size: 0.82rem; font-weight: 400; line-height: 1.45; margin-bottom: 8px; }
+  .lightbox-info p { font-size: 0.72rem; color: rgba(255, 255, 255, 0.52); }
+  .lightbox-close, .lightbox-nav {
     position: absolute;
-    top: 10px;
-    right: 10px;
-    background: var(--sold);
+    z-index: 1;
+    width: 42px;
+    height: 42px;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    background: #202020;
     color: #fff;
-    font-size: 0.58rem;
-    letter-spacing: 0.07em;
-    text-transform: uppercase;
-    padding: 4px 9px;
+    cursor: pointer;
+    font: 1.5rem/1 'Jost', sans-serif;
+  }
+  .lightbox-close { top: 20px; right: 24px; }
+  .lightbox-prev { left: 20px; top: 50%; transform: translateY(-50%); }
+  .lightbox-next { right: 20px; top: 50%; transform: translateY(-50%); }
+  .lightbox-close:hover, .lightbox-nav:hover { background: #343434; }
+
+  @media (max-width: 800px) {
+    .artwork-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+    .lightbox { padding: 56px 24px 24px; }
+    .lightbox-content { grid-template-columns: 1fr; gap: 14px; justify-items: center; }
+    .lightbox-image { max-height: calc(100dvh - 170px); }
+    .lightbox-info { width: min(100%, 600px); }
+    .lightbox-prev { left: 10px; }
+    .lightbox-next { right: 10px; }
   }
 
-  .painting-card h3 {
-    font-family: 'Jost', sans-serif;
-    font-weight: 500;
-    font-size: 1rem;
-    text-transform: uppercase;
-    letter-spacing: 0.02em;
-    margin-bottom: 4px;
-  }
-
-  .painting-card .price {
-    font-size: 0.8rem;
-    color: rgba(255, 255, 255, 0.68);
+  @media (max-width: 480px) {
+    .lightbox { padding: 56px 12px 18px; }
+    .lightbox-image { max-width: calc(100vw - 24px); max-height: calc(100dvh - 150px); }
+    .lightbox-close { top: 12px; right: 12px; }
   }
 
   .gallery-message {
@@ -282,10 +272,7 @@
   }
 
   @media (max-width: 800px) {
-    .painting-card::after { display: none; }
     .page { padding: 30px 24px 70px; }
-    .artwork-grid { gap: 16px; padding-right: 16px; }
-    .painting-card { flex-basis: min(82vw, 560px); }
     .gallery-hint { font-size: 0.58rem; letter-spacing: 0.14em; }
     nav { position: relative; width: 100%; min-height: 95px; padding: 20px 24px; flex-wrap: wrap; row-gap: 14px; }
     .logo {
@@ -300,11 +287,6 @@
     .nav-links a { font-size: clamp(0.48rem, 2.5vw, 0.65rem); letter-spacing: 0.08em; white-space: nowrap; }
   }
 
-  @media (max-width: 480px) {
-    .painting-card { flex-basis: 82vw; }
-    .painting-img { height: min(62vh, 480px); }
-    .gallery-hint { gap: 8px; }
-  }
 </style>
 </head>
 <body>
@@ -332,6 +314,19 @@
     </div>
   </main>
 
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Expanded artwork" hidden>
+    <button class="lightbox-close" id="lightbox-close" type="button" aria-label="Close expanded image">&times;</button>
+    <button class="lightbox-nav lightbox-prev" id="lightbox-prev" type="button" aria-label="Previous artwork">&lsaquo;</button>
+    <div class="lightbox-content">
+      <img class="lightbox-image" id="lightbox-image" alt="">
+      <div class="lightbox-info" aria-live="polite">
+        <h2 id="lightbox-title"></h2>
+        <p id="lightbox-price"></p>
+      </div>
+    </div>
+    <button class="lightbox-nav lightbox-next" id="lightbox-next" type="button" aria-label="Next artwork">&rsaquo;</button>
+  </div>
+
   <a class="sketchbook-link" href="sketchbooks.html">Sketchbooks</a>
 
   <footer>
@@ -353,8 +348,31 @@
 
   <script>
     const artworkGrid = document.getElementById('artwork-grid');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImage = document.getElementById('lightbox-image');
+    const lightboxTitle = document.getElementById('lightbox-title');
+    const lightboxPrice = document.getElementById('lightbox-price');
+    const lightboxClose = document.getElementById('lightbox-close');
+    const artworkPrices = {
+      'fahad': '$5,000.00',
+      'lyla baby and toys': '$5,000.00',
+      'river trip': '$5,000.00',
+      'untitled': '$5,000.00',
+      'icing on the cake': '$5,000.00',
+      'benson': 'Private collection',
+      'woman on the rock, river study': '$450.00',
+      'as we grow old': '$1,200.00',
+      'anderson park, late summer': '$320.00',
+      'backyard, morning light': '$280.00',
+      'study of a pear and knife': '$190.00',
+      'old barn, west orange': '$400.00',
+      'garden path in late bloom': '$310.00',
+      'rooftops at dusk': '$380.00'
+    };
     const imageExtensions = /\.(avif|gif|jpe?g|png|webp)$/i;
     const contentsUrl = 'https://api.github.com/repos/jakeyeh-art/Website/contents/images/artworks?ref=main';
+    let artworks = [];
+    let activeArtworkIndex = 0;
 
     function titleFromFilename(filename) {
       const normalizedName = filename.replace(/\.[^.]+$/, '').replace(/[-_]+/g, ' ').trim();
@@ -372,6 +390,20 @@
       artworkGrid.innerHTML = `<p class="gallery-message">${message}</p>`;
     }
 
+    function showArtwork(index) {
+      activeArtworkIndex = (index + artworks.length) % artworks.length;
+      const artwork = artworks[activeArtworkIndex];
+      lightboxImage.src = artwork.image;
+      lightboxImage.alt = artwork.title;
+      lightboxTitle.textContent = artwork.title;
+      lightboxPrice.textContent = artwork.price;
+    }
+
+    function closeLightbox() {
+      lightbox.hidden = true;
+      lightboxImage.removeAttribute('src');
+    }
+
     fetch(contentsUrl)
       .then(response => {
         if (!response.ok) throw new Error('Unable to load artwork folder');
@@ -381,7 +413,7 @@
         const artworkOrder = [
           'Icing On The Cake.jpeg'
         ];
-        const artworks = files
+        artworks = files
           .filter(file => file.type === 'file' && imageExtensions.test(file.name))
           .sort((a, b) => {
             const indexA = artworkOrder.indexOf(a.name);
@@ -395,20 +427,43 @@
           showMessage('Add artwork photos to images/artworks');
           return;
         }
-        artworkGrid.innerHTML = artworks.map(file => `
+        artworks = artworks.map(file => {
+          const title = titleFromFilename(file.name);
+          return {
+            image: file.download_url,
+            title,
+            price: artworkPrices[title.toLowerCase()] || 'Price on request'
+          };
+        });
+        artworkGrid.innerHTML = artworks.map((artwork, index) => `
           <div class="painting-card">
-            <a class="artwork-link" href="artwork-detail.html?image=${encodeURIComponent(file.name)}&title=${encodeURIComponent(titleFromFilename(file.name))}">
-              <div class="painting-img"><img src="https://raw.githubusercontent.com/jakeyeh-art/Website/main/images/artworks/${encodeURIComponent(file.name)}" alt="${titleFromFilename(file.name)}" loading="lazy"></div>
-              <h3>${titleFromFilename(file.name)}</h3>
-            </a>
+            <button type="button" class="painting-button" data-index="${index}" aria-label="Open ${artwork.title}">
+              <div class="painting-img"><img src="${artwork.image}" alt="${artwork.title}" loading="lazy"></div>
+            </button>
           </div>
         `).join('');
-        if (artworks.length > 1 && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-          artworkGrid.classList.add('peek-once');
-          artworkGrid.addEventListener('animationend', () => artworkGrid.classList.remove('peek-once'), { once: true });
-        }
+        artworkGrid.querySelectorAll('.painting-button').forEach(button => {
+          button.addEventListener('click', () => {
+            showArtwork(Number(button.dataset.index));
+            lightbox.hidden = false;
+            lightboxClose.focus();
+          });
+        });
       })
       .catch(() => showMessage('Artworks are temporarily unavailable'));
+
+    document.getElementById('lightbox-prev').addEventListener('click', () => showArtwork(activeArtworkIndex - 1));
+    document.getElementById('lightbox-next').addEventListener('click', () => showArtwork(activeArtworkIndex + 1));
+    lightboxClose.addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', event => {
+      if (event.target === lightbox) closeLightbox();
+    });
+    document.addEventListener('keydown', event => {
+      if (lightbox.hidden) return;
+      if (event.key === 'Escape') closeLightbox();
+      if (event.key === 'ArrowLeft') showArtwork(activeArtworkIndex - 1);
+      if (event.key === 'ArrowRight') showArtwork(activeArtworkIndex + 1);
+    });
   </script>
 
 </body>

@@ -75,21 +75,20 @@
           </div>
           <a class="inquire-button" id="inquire-link" href="inquire.html">INQUIRE</a>
         </div>
-        <p id="detail-description"></p>
       </div>
     </div>
   </main>
 
   <script>
     const artworks = {
-      'woman-on-the-rock': { title: 'Woman on the Rock, River Study', price: '$450.00', size: '12 x 16 in', color: '#d9dfbd', description: 'A direct observation study of a figure resting beside the river, painted with attention to the shifting light and quiet atmosphere.' },
-      'as-we-grow-old': { title: 'As We Grow Old', price: '$1,200.00', size: '18 x 24 in', color: '#cbd4d8', description: 'A portrait study exploring time, presence, and the subtle changes held in an observed face.' },
-      'anderson-park': { title: 'Anderson Park, Late Summer', price: '$320.00', size: '11 x 14 in', color: '#e8d99f', description: 'A late-summer landscape study focused on warm light, open air, and the changing greens of the park.' },
-      'backyard-morning-light': { title: 'Backyard, Morning Light', price: '$280.00', size: '9 x 12 in', color: '#dfcfad', description: 'A small plein air study of morning light moving across a familiar backyard.' },
-      'pear-and-knife': { title: 'Study of a Pear and Knife', price: '$190.00', size: '8 x 10 in', color: '#ead48a', description: 'A still life study of simple objects, observing their weight, color, and relationship to light.' },
-      'old-barn': { title: 'Old Barn, West Orange', price: '$400.00', size: '12 x 16 in', color: '#c6ad82', description: 'A landscape study of an old barn, built from direct observation and the muted colors of the surrounding fields.' },
-      'garden-path': { title: 'Garden Path in Late Bloom', price: '$310.00', size: '11 x 14 in', color: '#cbd5ab', description: 'A garden path observed in the final weeks of bloom, balancing structure with the looseness of growing forms.' },
-      'rooftops-at-dusk': { title: 'Rooftops at Dusk', price: '$380.00', size: '12 x 16 in', color: '#918a76', description: 'An evening city study concerned with the quiet geometry of rooftops as daylight gives way to dusk.' }
+      'woman-on-the-rock': { title: 'Woman on the Rock, River Study', price: '$450.00', size: '12 x 16 in', color: '#d9dfbd' },
+      'as-we-grow-old': { title: 'As We Grow Old', price: '$1,200.00', size: '18 x 24 in', color: '#cbd4d8' },
+      'anderson-park': { title: 'Anderson Park, Late Summer', price: '$320.00', size: '11 x 14 in', color: '#e8d99f' },
+      'backyard-morning-light': { title: 'Backyard, Morning Light', price: '$280.00', size: '9 x 12 in', color: '#dfcfad' },
+      'pear-and-knife': { title: 'Study of a Pear and Knife', price: '$190.00', size: '8 x 10 in', color: '#ead48a' },
+      'old-barn': { title: 'Old Barn, West Orange', price: '$400.00', size: '12 x 16 in', color: '#c6ad82' },
+      'garden-path': { title: 'Garden Path in Late Bloom', price: '$310.00', size: '11 x 14 in', color: '#cbd5ab' },
+      'rooftops-at-dusk': { title: 'Rooftops at Dusk', price: '$380.00', size: '12 x 16 in', color: '#918a76' }
     };
 
     const id = new URLSearchParams(window.location.search).get('id');
@@ -99,13 +98,13 @@
     const artwork = artworks[id] || artworks['woman-on-the-rock'];
     if (uploadedTitle) {
       const titleMetadata = {
-        'fahad': { title: 'Fahad', price: '$5,000.00', size: '16 x 12 in', year: '2025', medium: 'Oil on Arches Oil Paper', description: 'A direct, observant portrait study exploring weight, presence, and the quiet atmosphere of the subject.' },
-        'lyla': { title: 'Lyla Baby and Toys', price: '$5,000.00', size: '20 x 16 in', year: '2024', medium: 'Oil on Canvas', description: 'An intimate, playful study of Lyla surrounded by the warmth and tenderness of childhood objects.' },
-        'lyla baby and toys': { title: 'Lyla Baby and Toys', price: '$5,000.00', size: '20 x 16 in', year: '2024', medium: 'Oil on Canvas', description: 'An intimate, playful study of Lyla surrounded by the warmth and tenderness of childhood objects.' },
-        'river trip': { title: 'River Trip', price: '$5,000.00', size: '14 x 11 in', year: '2026', medium: 'Oil on Board', description: 'A compact landscape study centered on movement, memory, and the shifting edge between water and shore.' },
-        'untitled': { title: 'Untitled', price: '$5,000.00', size: '12 x 9 in', year: '2026', medium: 'Oil on Paper', description: 'A small abstracted work focused on gesture, material, and the quiet drama of color and rhythm.' },
-        'icing on the cake': { title: 'Icing on the Cake', price: '$5,000.00', size: '16 x 24 in', year: '2025', medium: 'Oil on Arches Oil Paper', description: 'Theres something magical about this piece in the way it opens up a fearlessness in me, a chance to play with the materiality of the paint to its greater potential.' },
-        'benson': { title: 'Benson', price: 'Private collection', size: '5 x 7 in', year: '2026', medium: 'Oil on board', description: 'Painted my friend Benson from a photo I took during a casual afternoon barbecue.' }
+        'fahad': { title: 'Fahad', price: '$5,000.00', size: '16 x 12 in', year: '2025', medium: 'Oil on Arches Oil Paper' },
+        'lyla': { title: 'Lyla Baby and Toys', price: '$5,000.00', size: '20 x 16 in', year: '2024', medium: 'Oil on Canvas' },
+        'lyla baby and toys': { title: 'Lyla Baby and Toys', price: '$5,000.00', size: '20 x 16 in', year: '2024', medium: 'Oil on Canvas' },
+        'river trip': { title: 'River Trip', price: '$5,000.00', size: '14 x 11 in', year: '2026', medium: 'Oil on Board' },
+        'untitled': { title: 'Untitled', price: '$5,000.00', size: '12 x 9 in', year: '2026', medium: 'Oil on Paper' },
+        'icing on the cake': { title: 'Icing on the Cake', price: '$5,000.00', size: '16 x 24 in', year: '2025', medium: 'Oil on Arches Oil Paper' },
+        'benson': { title: 'Benson', price: 'Private collection', size: '5 x 7 in', year: '2026', medium: 'Oil on board' }
       };
       const normalizedTitle = uploadedTitle.trim().toLowerCase();
       const matchingMetadata = titleMetadata[normalizedTitle];
@@ -113,7 +112,6 @@
         Object.assign(artwork, matchingMetadata);
       } else {
         artwork.title = uploadedTitle;
-        artwork.description = 'Theres something magical about this piece in the way it opens up a fearlessness in me, a chance to play with the materiality of the paint to its greater potential.';
       }
     }
     document.title = `${artwork.title} | JAKE YEN PO YEH`;
@@ -128,7 +126,6 @@
     } else {
       document.getElementById('detail-medium-row').hidden = true;
     }
-    document.getElementById('detail-description').textContent = artwork.description;
     document.getElementById('detail-image').style.setProperty('--artwork-color', artwork.color);
     if (imageName) {
       const imageUrl = imageName.startsWith('http')

@@ -24,8 +24,8 @@
   .gallery-hint { color: rgba(255, 255, 255, 0.68); font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase; }
   .artwork-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
   .painting-card { min-width: 0; }
-  .painting-card button { display: block; width: 100%; padding: 0; border: 0; background: var(--panel); color: inherit; cursor: zoom-in; }
-  .painting-img { aspect-ratio: 1 / 1; width: 100%; display: flex; align-items: center; justify-content: center; background: var(--panel); overflow: hidden; }
+  .painting-card button { display: block; width: 100%; padding: 0; border: 0; background: transparent; color: inherit; cursor: zoom-in; }
+  .painting-img { aspect-ratio: 1 / 1; width: 100%; display: flex; align-items: center; justify-content: center; background: transparent; overflow: hidden; }
   .painting-img img { width: 100%; height: 100%; object-fit: contain; display: block; transition: transform 220ms ease; }
   .painting-card button:hover img, .painting-card button:focus-visible img { transform: scale(1.04); }
   .gallery-message { grid-column: 1 / -1; padding: 70px 24px; border: 1px solid var(--line); color: rgba(255, 255, 255, 0.68); text-align: center; font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; }
