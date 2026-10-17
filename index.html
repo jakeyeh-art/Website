@@ -100,6 +100,15 @@
     overflow: hidden;
   }
 
+  .hero::after {
+    content: "";
+    position: absolute;
+    inset: auto 0 0;
+    height: clamp(120px, 18vh, 220px);
+    background: linear-gradient(to bottom, transparent, #000);
+    pointer-events: none;
+  }
+
   /* ---------- QUOTE ---------- */
   .quote-section {
     max-width: 780px;
@@ -109,10 +118,10 @@
   }
 
   .quote-section p {
-    font-family: 'Gloria Hallelujah', cursive;
+    font-family: 'Jost', sans-serif;
     font-style: normal;
-    font-size: 1.28rem;
-    line-height: 1.65;
+    font-size: 1.35rem;
+    line-height: 1.55;
     color: rgba(255, 255, 255, 0.84);
   }
 
@@ -219,37 +228,22 @@
   }
 
   .profile-link {
-    display: block;
-    position: relative;
-    max-width: 380px;
+    display: flex;
+    width: fit-content;
+    max-width: 100%;
     margin: 0 auto;
-    overflow: hidden;
-    background: #202020;
-  }
-
-  .profile-image {
-    display: block;
-    width: 100%;
-    aspect-ratio: 4 / 3;
-    object-fit: cover;
-    transition: transform 220ms ease;
+    background: transparent;
   }
 
   .profile-label {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    display: block;
     padding: 10px 14px;
-    background: rgba(0, 0, 0, 0.78);
+    background: #202020;
     color: #fff;
     font-size: 0.72rem;
     letter-spacing: 0.16em;
     text-transform: uppercase;
   }
-
-  .profile-link:hover .profile-image,
-  .profile-link:focus-visible .profile-image { transform: scale(1.025); }
 
   .more-link {
     display: block;
@@ -411,13 +405,11 @@
   <section class="hero" role="img" aria-label="Abstract artwork in warm earth tones"></section>
 
   <section class="quote-section">
-    <p>Soon after graduating with a business degree and getting a job in corporate America, I began to ask myself the greater questions. Roughly seven years ago, "There's got to be more to life than sitting in front of a computer for eight hours a day," I thought. I started to pick up a pencil and a pad. I had no idea what I was doing. I knew I was doing this for myself.</p>
-    <p>For me, art is an open-ended question with no definitive answer, and that's exactly what keeps my curiosity alive. It's how I connect to the world and try to become a better person, one sketch at a time. It's a lifelong journey of patience, discipline, and self-discovery.</p>
+    <p>I spent the last seven years of my life pondering the reason for my existence. “There’s got to be more to life than sitting in front of a computer for eight hours a day,” I thought. Then I found a sketchpad and a pencil near my bed, and I started to draw my life away. In 2026 I took a leap, left corporate America, and decided to fully immerse myself in art. Though painting a beautiful work is important, I indulge in the process of making art, the act itself. Through that act, I learn a little more about myself. It keeps me curious and open-minded to all the possibilities in this life. One day I hope to spread this love and pass it down to generations to come.</p>
   </section>
 
   <section class="profile-section">
     <a class="profile-link" href="about.html" aria-label="Get to know Jake Yeh">
-      <img class="profile-image" src="images/Headshot.png" alt="Jake Yeh">
       <span class="profile-label">Get to know me</span>
     </a>
   </section>

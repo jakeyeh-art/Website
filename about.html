@@ -25,7 +25,11 @@
   .about-intro { display: flex; flex-direction: column; gap: 32px; align-items: flex-start; }
   .about-grid { display: grid; gap: 24px; align-items: start; }
   .about-grid p { font-family: 'Jost', sans-serif; font-size: 1.35rem; line-height: 1.55; }
-  .headshot { width: 50%; max-width: 420px; aspect-ratio: 1 / 1; object-fit: cover; display: block; }
+  .headshot-figure { width: 50%; max-width: 420px; margin: 0; }
+  .headshot-frame { position: relative; aspect-ratio: 1 / 1; overflow: hidden; border-radius: 16px; background: linear-gradient(145deg, #343434, #080808); }
+  .headshot { width: 100%; height: 100%; object-fit: cover; display: block; filter: grayscale(100%); }
+  .headshot-frame::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 58%, rgba(0, 0, 0, 0.32)); pointer-events: none; }
+  .headshot-credit { margin-top: 10px; color: rgba(255, 255, 255, 0.55); font-size: 0.72rem; letter-spacing: 0.04em; }
   .details { margin-top: 100px; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; border-top: 1px solid var(--line); padding-top: 34px; }
   .details-section + .details-section { margin-top: 54px; }
   .details h2 { font-family: 'Jost', sans-serif; font-size: 2rem; font-weight: 500; margin-bottom: 20px; }
@@ -45,7 +49,7 @@
   .footer-links { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; }
   .footer-bottom .subscribe-form { position: absolute; top: 50%; left: 50%; margin: 0; transform: translate(-50%, -50%); }
   @media (max-width: 600px) { .footer-bottom { padding: 18px 0 0; display: grid; grid-template-columns: auto 1fr; gap: 16px 12px; } .footer-bottom .subscribe-form { position: static; grid-column: 1 / -1; grid-row: 1; width: 100%; transform: none; } .footer-bottom .made-with { grid-column: 1; grid-row: 2; margin-right: 0; align-self: center; } .made-with img { width: 48px; } .footer-links { grid-column: 2; grid-row: 2; gap: 8px 12px; justify-content: flex-end; align-items: center; } }
-  @media (max-width: 900px) { nav { position: relative; min-height: 95px; padding: 20px 24px; flex-wrap: wrap; row-gap: 14px; } .logo { flex: 1 1 180px; max-width: 180px; font-size: clamp(0.78rem, 3.8vw, 1.2rem); line-height: 0.96; } .nav-right { position: absolute; top: 20px; right: 24px; } .nav-links { order: 3; flex-basis: 100%; min-width: 0; width: 100%; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 0; } .nav-links li { min-width: 0; text-align: center; } .nav-links a { font-size: clamp(0.48rem, 2.5vw, 0.65rem); letter-spacing: 0.08em; white-space: nowrap; } .content { padding: 64px 24px 90px; } .about-intro, .details { grid-template-columns: 1fr; gap: 30px; } .headshot { width: 50%; max-width: 300px; } .details { margin-top: 70px; } h1 { font-size: 3rem; } }
+  @media (max-width: 900px) { nav { position: relative; min-height: 95px; padding: 20px 24px; flex-wrap: wrap; row-gap: 14px; } .logo { flex: 1 1 180px; max-width: 180px; font-size: clamp(0.78rem, 3.8vw, 1.2rem); line-height: 0.96; } .nav-right { position: absolute; top: 20px; right: 24px; } .nav-links { order: 3; flex-basis: 100%; min-width: 0; width: 100%; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 0; } .nav-links li { min-width: 0; text-align: center; } .nav-links a { font-size: clamp(0.48rem, 2.5vw, 0.65rem); letter-spacing: 0.08em; white-space: nowrap; } .content { padding: 64px 24px 90px; } .about-intro, .details { grid-template-columns: 1fr; gap: 30px; } .headshot-figure { width: 50%; max-width: 300px; } .details { margin-top: 70px; } h1 { font-size: 3rem; } }
 </style>
 </head>
 <body>
@@ -66,10 +70,14 @@
   <main class="content">
     <h1>About</h1>
     <div class="about-intro">
-      <img class="headshot" src="images/Headshot.png" alt="Headshot of Jake Yeh">
+      <figure class="headshot-figure">
+        <div class="headshot-frame">
+          <img class="headshot" src="images/Headshot.jpg" alt="Black and white portrait of Jake Yeh">
+        </div>
+        <figcaption class="headshot-credit">Photo: Ellina Chetverikova</figcaption>
+      </figure>
       <div class="about-grid">
-        <p>Jake Yeh is a Taiwanese American representational artist born in Taipei, Taiwan. Working primarily in oil, his current practice focuses on still life, landscape, and figurative work.</p>
-        <p>Yeh's work is driven by a principle of balancing truthful, direct observation with creative expression. His current ideological focus is to accurately portray the life of Taiwanese immigrants in the US, what it meant to be "somewhere in between," and the cultural exchange, both tangible and intangible, found in that contemporaneous experience. For Yeh, painting means continuing a tradition of "pushing colored dirt" that stretches back to the dawn of humanity, and through it, he cultivates the patience, discipline, and humility the work demands. Jake continues to further his studies at Lyme Academy of Fine Arts and wishes to inspire the next generation of artists to be proud of who they are.</p>
+        <p>Jake Yeh is an artist born in Taipei, Taiwan. His work is largely representational, with a specific focus on plein air painting, figure, and portraiture. His current project is a series of still life paintings that tell the story of Asian American immigrant life in the US. He continues to explore his ways of working while pursuing his studies in realism at Lyme Academy of Fine Arts, and hopes to keep walking this lifelong path and bring others along with him.</p>
         <div class="signature">Jake Yen Po Yeh 葉彥伯</div>
       </div>
     </div>
