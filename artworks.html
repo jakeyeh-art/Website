@@ -82,45 +82,11 @@
     padding: 46px 40px 100px;
   }
 
-  .gallery-toolbar {
-    display: flex;
-    justify-content: flex-end;
-    margin-bottom: 10px;
-  }
-
-  .gallery-hint {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    color: rgba(255, 255, 255, 0.72);
-    font-size: 0.62rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    padding-right: 2px;
-  }
-
-  .gallery-hint::before {
-    content: "";
-    width: 24px;
-    height: 1px;
-    background: rgba(255, 255, 255, 0.35);
-    position: relative;
-  }
-
-  .gallery-hint::after {
-    content: "";
-    width: 7px;
-    height: 7px;
-    border-top: 1px solid rgba(255, 255, 255, 0.45);
-    border-right: 1px solid rgba(255, 255, 255, 0.45);
-    transform: rotate(45deg);
-    display: block;
-    animation: drift 1.8s ease-in-out infinite alternate;
-  }
-
-  @keyframes drift {
-    0% { transform: translateX(-2px) rotate(45deg); opacity: 0.45; }
-    100% { transform: translateX(4px) rotate(45deg); opacity: 1; }
+  .gallery-note {
+    margin-bottom: 18px;
+    color: rgba(255, 255, 255, 0.56);
+    font-size: 0.78rem;
+    line-height: 1.5;
   }
 
   .artwork-grid {
@@ -273,7 +239,6 @@
 
   @media (max-width: 800px) {
     .page { padding: 30px 24px 70px; }
-    .gallery-hint { font-size: 0.58rem; letter-spacing: 0.14em; }
     nav { position: relative; width: 100%; min-height: 95px; padding: 20px 24px; flex-wrap: wrap; row-gap: 14px; }
     .logo {
       flex: 1 1 180px;
@@ -306,9 +271,7 @@
   </nav>
 
   <main class="page">
-    <div class="gallery-toolbar" aria-label="Artwork gallery navigation">
-      <div class="gallery-hint">More works</div>
-    </div>
+    <p class="gallery-note">New works will be added as they become available, so please check back regularly. Instagram, however, is the main source for updates.</p>
     <div class="artwork-grid" id="artwork-grid">
       <p class="gallery-message">Loading artworks...</p>
     </div>
